@@ -7,6 +7,7 @@
 }
 
 body {
+  background-color: #f8f9fa;
   font-family: 'Bahnschrift', sans-serif;
 }
 
@@ -107,6 +108,78 @@ a {
   margin: 4px 0 0 0;
 }
 
+.page-box {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--preto);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.page-box.active {
+  background-color: var(--preto);
+  color: var(--branco);
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.page-box:not(:last-child) {
+  margin-right: 8px;
+}
+
+.img-principal {
+  width: 630px;
+  height: 840px;
+  object-fit: cover;
+}
+.img-miniatura {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+.tamanho-btn {
+  width: auto;
+  min-width: 44px;
+  height: 44px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: transparent;
+  margin-right: 8px;
+}
+.cor-opcao {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.cor-opcao.selecionada {
+  border: 2px solid --preto;
+}
+.quantidade-input {
+  width: 99px;
+  height: 44px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+.btn-adicionar {
+  width: 272px;
+  height: 44px;
+  border-radius: 8px;
+  background-color: var(--preto);
+  color: var(--branco);
+  border: none;
+}
 
 /*---------------------------- FOOTER --------------------------------*/
 
