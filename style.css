@@ -1,0 +1,184 @@
+:root {
+  --preto: #000000;
+  --branco: #ffffff;
+  --cinza-escuro: #585858;
+  --cinza-medio: #B9B9B9;
+  --cinza-claro: #D8D8D8;
+}
+
+body {
+  font-family: 'Bahnschrift', sans-serif;
+}
+
+/* Logo */
+.navbar img {
+  /*height: 84px !important;*/
+  width: auto;
+  max-width: 232px;
+}
+
+/* Selos de garantia*/
+.container .iconify.fs-1 {
+  font-size: 2rem !important;
+}
+
+.container .row .fw-bold.fs-5 {
+  font-size: 1rem !important;
+}
+
+.container .row .fs-6 {
+  font-size: 0.85rem !important;
+}
+
+/* Imagem do Sobre-Nós */
+/* PESQUISAR SOBRE*/
+section .container > .w-50:first-child img {
+  max-width: 100%;
+  height: auto;
+  width: 80%;
+}
+
+.carrossel-container {
+  padding: 40px 60px;
+  background: var(--branco);
+}
+
+.categoria {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--preto);
+  margin-bottom: 16px;
+}
+
+/* Container dos cards lá */
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+
+.resultado-pesquisa h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-top: 1.875rem;
+  margin-bottom: 1.875rem;
+}
+
+
+.card {
+  width: 360px;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+
+  text-decoration: none;
+  color: inherit;
+}
+
+a {
+  text-decoration: none; /*tira o sublinhado do link*/
+}
+
+.card img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.info {
+  padding-top: 12px;
+}
+
+.nome {
+  font-size: 20px;
+  color: var(--cinza-escuro);
+  font-weight: 400;
+  margin: 0;
+}
+
+.preco {
+  font-size: 24px;
+  font-weight: 600; /*semiBold */
+  color: var(--preto);
+  margin: 4px 0 0 0;
+}
+
+
+/*---------------------------- FOOTER --------------------------------*/
+
+.footer-container {
+    background-color: var(--preto);
+    margin-top: 4rem;
+    padding: 2rem 0 0.5rem 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 6%;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    color: var(--branco);
+}
+
+.footer-brand{
+    flex: 2;
+}
+
+.footer-section h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.footer-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.footer-section ul li a,
+.footer-bottom a {
+    text-decoration: none;
+    color: var(--branco);
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-section ul li a:hover,
+.footer-bottom a:hover {
+    color: var(--branco);
+}
+
+.footer-section img {
+    max-width: 40%;
+    height: auto;
+}
+
+.footer-bottom {
+    color: var(--branco);
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.footer-bottom hr {
+    margin-bottom: 0.5rem;
+}
