@@ -1,0 +1,27 @@
+[
+  {
+    "nome": "Camiseta Volcom Stone - Branca",
+    "preco": "R$ 197,99",
+    "imagem": "assets/images/img1.jpg",
+    "link": "produto.html"
+  },
+  {
+    "nome": "Camiseta Thrasher - Preta",
+    "preco": "R$ 149,90",
+    "imagem": "assets/images/img2.jpg",
+    "link": "produto2.html"
+  },
+  {
+    "nome": "Camiseta Thrasher - Preta",
+    "preco": "R$ 149,90",
+    "imagem": "assets/images/img3.jpg",
+    "link": "produto2.html"
+  },
+  {
+    "nome": "Camiseta Thrasher - Preta",
+    "preco": "R$ 149,90",
+    "imagem": "assets/images/img4.jpg",
+    "link": "produto2.html"
+  }
+]
+
