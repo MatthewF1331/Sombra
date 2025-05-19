@@ -30,6 +30,7 @@
     </div>
   </nav>
   
+
   <div class="container mt-5 pt-5">
     <h2 class="sacola-title mb-4">MINHA SACOLA</h2>
     <div class="d-flex flex-wrap gap-4">
@@ -45,15 +46,17 @@
 
         <!-- Produto 1 -->
         <div class="card-produto">
-          <img src="assets/images/produto1.jpg" alt="Produto">
+          <img src="assets/images/img2.jpg" alt="Produto">
           <div class="produto-info">
             <h5>Camisa Oversized</h5>
             <p>Cód: 123456</p>
             <p class="preco">R$ 120,00</p>
           </div>
           <div class="produto-total">
+            
             <!-- Campo quantidade -->
-            <input type="number" value="1" min="1" max="99" style="width: 60px; height: 38px; text-align: center;">
+            <input type="number" class="quantidade-input me-3" value="1" min="1">
+
             <span>R$ 120,00</span>
             <span class="iconify fs-4" data-icon="mdi:trash-can-outline" style="cursor: pointer;"></span>
           </div>
@@ -61,14 +64,17 @@
 
         <!-- Produto 2 (repetição do card) -->
         <div class="card-produto">
-          <img src="assets/images/produto2.jpg" alt="Produto">
+          <img src="assets/images/img1.jpg" alt="Produto">
           <div class="produto-info">
             <h5>Boné Street</h5>
             <p>Cód: 654321</p>
             <p class="preco">R$ 80,00</p>
           </div>
           <div class="produto-total">
-            <input type="number" value="1" min="1" max="99" style="width: 60px; height: 38px; text-align: center;">
+            
+            <!-- Campo quantidade -->
+            <input type="number" class="quantidade-input me-3" value="1" min="1">
+
             <span>R$ 80,00</span>
             <span class="iconify fs-4" data-icon="mdi:trash-can-outline" style="cursor: pointer;"></span>
           </div>
@@ -90,7 +96,9 @@
           <span>TOTAL</span>
           <span>R$ 220,00</span>
         </div>
+
         <button class="btn-avancar">Avançar</button>
+
         <a class="link-comprar">Continuar comprando</a>
       </div>
     </div>

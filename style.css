@@ -191,7 +191,7 @@ a {
       height: 40px;
       font-size: 20px;
       font-weight: 300;
-      color: #4B4B4B;
+      color: var(--cinza-escuro);
     }
     .card-produto {
       width: 1020px;
@@ -274,9 +274,9 @@ a {
     .btn-avancar {
       width: 460px;
       height: 44px;
-      border-radius: 22px;
-      background-color: black;
-      color: white;
+      border-radius: 8px;
+      background-color: var(--preto);
+      color: var(--branco);
       font-weight: 500;
       font-size: 16px;
       border: none;
