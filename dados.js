@@ -1,4 +1,4 @@
-fetch('produtos.json') //Tem que executar com o LIVE SERVER porque o navegador bloqueia o Fetch()
+fetch('produtos.json')
   .then(response => response.json())
   .then(produtos => {
     const container = document.getElementById('produtos-container');
@@ -8,14 +8,17 @@ fetch('produtos.json') //Tem que executar com o LIVE SERVER porque o navegador b
       card.classList.add('card');
 
       card.innerHTML = `
-        <a href="${produto.link}">
-          <img src="${produto.imagem}" alt="${produto.nome}">
-          <div class="info">
-            <h3 class="nome">${produto.nome}</h3>
-            <p class="preco">${produto.preco}</p>
-          </div>
-        </a>
+        <img src="${produto.imagem}" alt="${produto.nome}">
+        <div class="info">
+          <h3 class="nome">${produto.nome}</h3>
+          <p class="preco">${produto.preco}</p>
+        </div>
       `;
+
+      card.addEventListener('click', () => {
+        localStorage.setItem('produtoSelecionado', JSON.stringify(produto));
+        window.location.href = 'produto.html';
+      });
 
       container.appendChild(card);
     });

@@ -1,27 +1,52 @@
 [
   {
-    "nome": "Camiseta Volcom Stone - Branca",
-    "preco": "R$ 197,99",
+    "id": "N3XZQWPY1",
+    "nome": "Camiseta Thrasher Fire - Preta",
+    "preco": "R$ 199,90",
     "imagem": "assets/images/img1.jpg",
-    "link": "produto.html"
+    "descricao": "Este produto é confeccionado em algodão orgânico...",
+    "detalhes": [
+      "Composição: 100% algodão",
+      "Modelagem regular",
+      "Manga curta"
+    ]
   },
   {
-    "nome": "Camiseta Thrasher - Preta",
-    "preco": "R$ 149,90",
+    "id": "N3XZQWPY2",
+    "nome": "Camiseta Chronic - Preta",
+    "preco": "R$ 199,90",
     "imagem": "assets/images/img2.jpg",
-    "link": "produto2.html"
+    "descricao": "Este produto é confeccionado em algodão orgânico...",
+    "detalhes": [
+      "Composição: 100% algodão",
+      "Modelagem regular",
+      "Manga curta"
+    ]
   },
   {
-    "nome": "Camiseta Thrasher - Preta",
-    "preco": "R$ 149,90",
+    "id": "N3XZQWPY3",
+    "nome": "Camiseta Volcom - Preta",
+    "preco": "R$ 199,90",
     "imagem": "assets/images/img3.jpg",
-    "link": "produto2.html"
+    "descricao": "Este produto é confeccionado em algodão orgânico...",
+    "detalhes": [
+      "Composição: 100% algodão",
+      "Modelagem regular",
+      "Manga curta"
+    ]
   },
   {
-    "nome": "Camiseta Thrasher - Preta",
-    "preco": "R$ 149,90",
+    "id": "N3XZQWPY4",
+    "nome": "Camiseta Thrasher Fire - Preta",
+    "preco": "R$ 199,90",
     "imagem": "assets/images/img4.jpg",
-    "link": "produto2.html"
+    "descricao": "Este produto é confeccionado em algodão orgânico...",
+    "detalhes": [
+      "Composição: 100% algodão",
+      "Modelagem regular",
+      "Manga curta"
+    ]
   }
 ]
+
 
