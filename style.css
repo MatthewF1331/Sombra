@@ -216,7 +216,7 @@ a {
     .produto-info h5 {
       font-size: 20px;
       font-weight: 400;
-      color: black;
+      color: var(--preto);
     }
     .produto-info p {
       margin: 0;
@@ -227,7 +227,7 @@ a {
     .produto-info .preco {
       font-size: 24px;
       font-weight: 400;
-      color: black;
+      color: var(--preto);
     }
     .produto-total {
       display: flex;
@@ -237,7 +237,7 @@ a {
     .produto-total span {
       font-size: 24px;
       font-weight: 600;
-      color: black;
+      color: var(--preto);
     }
     .resumo-compra {
       width: 501px;
@@ -249,7 +249,7 @@ a {
     .resumo-compra h4 {
       font-size: 24px;
       font-weight: 600;
-      color: black;
+      color: var(--preto);
       text-transform: uppercase;
       margin-bottom: 20px;
     }
@@ -264,7 +264,7 @@ a {
       font-weight: 400;
     }
     .resumo-item span:last-child {
-      color: black;
+      color: var(--preto);
     }
     .resumo-total {
       margin-top: 20px;
@@ -292,6 +292,156 @@ a {
       color: black;
       text-decoration: underline;
       cursor: pointer;
+    }
+
+.checkout-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .checkout-card {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+      width: 956px;
+      max-width: 100%;
+    }
+
+    .checkout-card h4 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      font-size: 20px;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: #000;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      border: 2px solid #B0B0B0;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .form-control::placeholder {
+      color: #B0B0B0;
+    }
+
+    .pagamento-opcao {
+      border: 2px solid #d3d3d3;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      cursor: pointer;
+      width: 624px;
+    }
+
+    .pagamento-opcao.selected {
+      border-color: #666;
+    }
+
+    .pagamento-opcao input[type="radio"] {
+      margin-top: 5px;
+    }
+
+    .pagamento-texto strong {
+      font-size: 20px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .pagamento-texto p {
+      font-size: 20px;
+      font-weight: 300;
+      margin: 0;
+      color: #666;
+    }
+    
+    
+/*---------------------------- CHECKOUT --------------------------------*/
+
+
+    .checkout-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .checkout-card {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+      width: 956px;
+      max-width: 100%;
+    }
+
+    .checkout-card h4 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      font-size: 20px;
+      font-weight: 300;
+      text-transform: none;
+      color: #000;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      border: 2px solid #B0B0B0;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .form-control::placeholder {
+      color: #B0B0B0;
+    }
+
+    .pagamento-opcao {
+      border: 2px solid #d3d3d3;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      cursor: pointer;
+      width: 624px;
+    }
+
+    .pagamento-opcao.selected {
+      border-color: #666;
+    }
+
+    .pagamento-opcao input[type="radio"] {
+      margin-top: 5px;
+    }
+
+    .pagamento-texto strong {
+      font-size: 20px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .pagamento-texto p {
+      font-size: 20px;
+      font-weight: 300;
+      margin: 0;
+      color: #666;
     }
 /*---------------------------- FOOTER --------------------------------*/
 
