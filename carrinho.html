@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sacola - Sombra Streetwear</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https: cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <script src="https: code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
 
 <body>
@@ -14,28 +15,93 @@
   <nav class="navbar navbar-expand-lg fixed-top bg-black shadow-sm">
     <div class="container-fluid justify-content-between px-4">
       <div class="d-flex align-items-center gap-3">
-        <a href="menu.html">
+        <a href="#" id="menu-toggle">
           <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
         </a>
-        <a href="catalogo.html">
-          <span class="iconify text-white fs-3" data-icon="mdi:magnify"></span>
-        </a>
+        <div class="search-container">
+          <form id="search-form" class="d-flex">
+            <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
+            <button type="submit" class="search-button">
+              <span class="iconify" data-icon="mdi:magnify"></span>
+            </button>
+          </form>
+        </div>
       </div>
       <a href="index.html">
         <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
       </a>
-      <a href="carrinho.html">
+      <a href="#" id="cart-toggle">
         <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
       </a>
     </div>
   </nav>
-  
 
-  <div class="container mt-5 pt-5">
+  <!-- Menu Dropdown -->
+  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none; position: absolute; width: 100%; z-index: 1000;">
+    <div class="row">
+      <div class="col">
+        <h6 class="fw-bold">Categoria</h6>
+        <p><a href="#" data-categoria="camiseta">Camiseta</a><br>
+          <a href="#" data-categoria="moletom">Moletom</a><br>
+          <a href="#" data-categoria="calca">Calças</a><br>
+          <a href="#" data-categoria="bag">Bags</a><br>
+          <a href="#" data-categoria="bone">Bonés</a><br>
+          <a href="#" data-categoria="tenis">Tênis</a>
+        </p>
+      </div>
+      <div class="col">
+        <h6 class="fw-bold">Marcas</h6>
+        <p><a href="#" data-marca="kenner">Kenner</a><br>
+          <a href="#" data-marca="norden">Norden</a><br>
+          <a href="#" data-marca="vans">Vans</a><br>
+          <a href="#" data-marca="volcom">Volcom</a><br>
+          <a href="#" data-marca="blunt">Blunt</a><br>
+          <a href="#" data-marca="chronic">Chronic</a><br>
+          <a href="#" data-marca="tripside">Tripside</a>
+        </p>
+      </div>
+      <div class="col">
+        <h6 class="fw-bold">Coleção</h6>
+        <p><a href="#" data-colecao="blunt-summer">Blunt Summer</a><br>
+          <a href="#" data-colecao="seven-sins">Seven Sins</a><br>
+          <a href="#" data-colecao="chronic-setembro">Chronic Setembro</a><br>
+          <a href="#" data-colecao="vans-fall">Vans Fall</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal do Carrinho -->
+  <div class="overlay" id="cart-overlay"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h4>Minha Sacola</h4>
+      <button class="cart-modal-close" id="cart-modal-close">&times;</button>
+    </div>
+    <div class="cart-modal-items" id="cart-modal-items">
+    </div>
+    <div class="cart-modal-footer">
+      <div class="cart-modal-total">
+        <span>Total:</span>
+        <span id="cart-modal-total-value">R$ 0,00</span>
+      </div>
+      <div class="cart-modal-buttons">
+        <button class="cart-modal-checkout" id="cart-modal-checkout">Finalizar Compra</button>
+        <button class="cart-modal-continue" id="cart-modal-continue">Continuar Comprando</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="container" style="margin-top: 85px;">
+    <p id="breadcrumb" style="font-weight: 300; font-size: 20px; color: #555;">Home > Sacola</p>
+  </div>
+
+  <div class="container mt-3 pt-3">
     <h2 class="sacola-title mb-4">MINHA SACOLA</h2>
     <div class="d-flex flex-wrap gap-4">
       <!-- Resumo dos Produtos -->
-      <div>
+      <div id="produtos-container">
         <div class="card-legenda d-flex justify-content-between align-items-center mb-2 px-3">
           <span>PRODUTO</span>
           <div class="d-flex gap-5">
@@ -44,110 +110,341 @@
           </div>
         </div>
 
-        <!-- Produto 1 -->
-        <div class="card-produto">
-          <img src="assets/images/img2.jpg" alt="Produto">
-          <div class="produto-info">
-            <h5>Camisa Oversized</h5>
-            <p>Cód: 123456</p>
-            <p class="preco">R$ 120,00</p>
-          </div>
-          <div class="produto-total">
-            
-            <!-- Campo quantidade -->
-            <input type="number" class="quantidade-input me-3" value="1" min="1">
-
-            <span>R$ 120,00</span>
-            <span class="iconify fs-4" data-icon="mdi:trash-can-outline" style="cursor: pointer;"></span>
-          </div>
-        </div>
-
-        <!-- Produto 2 (repetição do card) -->
-        <div class="card-produto">
-          <img src="assets/images/img1.jpg" alt="Produto">
-          <div class="produto-info">
-            <h5>Boné Street</h5>
-            <p>Cód: 654321</p>
-            <p class="preco">R$ 80,00</p>
-          </div>
-          <div class="produto-total">
-            
-            <!-- Campo quantidade -->
-            <input type="number" class="quantidade-input me-3" value="1" min="1">
-
-            <span>R$ 80,00</span>
-            <span class="iconify fs-4" data-icon="mdi:trash-can-outline" style="cursor: pointer;"></span>
-          </div>
-        </div>
       </div>
 
-      <!-- Resumo da Compra -->
       <div class="resumo-compra">
         <h4>RESUMO DA COMPRA</h4>
         <div class="resumo-item">
           <span>Subtotal</span>
-          <span>R$ 200,00</span>
+          <span id="resumo-subtotal">R$ 0,00</span>
         </div>
         <div class="resumo-item">
           <span>Entrega</span>
-          <span>R$ 20,00</span>
+          <span id="resumo-frete">R$ 20,00</span>
         </div>
         <div class="resumo-item resumo-total">
           <span>TOTAL</span>
-          <span>R$ 220,00</span>
+          <span id="resumo-total">R$ 0,00</span>
         </div>
         <a href="checkout.html">
-            <button class="btn-avancar">Avançar</button>
-        </a>  
+          <button class="btn-avancar">Avançar para Checkout</button>
+        </a>
 
-        <a class="catalogo">Continuar comprando</a>
+        <a href="index.html" class="link-comprar">Continuar comprando</a>
       </div>
-
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer-container">
-        <div class="footer">
-            <div class="footer-section">
-                <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+    <div class="footer">
+      <div class="footer-section">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+      </div>
+
+      <div class="footer-section">
+        <h2>Institucional</h2>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Como comprar</a></li>
+          <li><a href="#">Envio</a></li>
+          <li><a href="#">Segurança</a></li>
+          <li><a href="#">Pagamento</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h2>Pagamento</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <hr />
+      <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
+    </div>
+  </footer>
+
+  <script src="https: cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartToggle = document.getElementById("cart-toggle");
+      const cartModal = document.getElementById("cart-modal");
+      const cartOverlay = document.getElementById("cart-overlay");
+      const cartModalClose = document.getElementById("cart-modal-close");
+      const cartModalContinue = document.getElementById("cart-modal-continue");
+      const cartModalCheckout = document.getElementById("cart-modal-checkout");
+      const cartModalItems = document.getElementById("cart-modal-items");
+      const cartModalTotalValue = document.getElementById("cart-modal-total-value");
+
+      if (!cartToggle || !cartModal || !cartOverlay) {
+        console.error("Elementos do carrinho não encontrados");
+        return;
+      }
+
+      console.log("Inicializando carrinho modal...");
+
+      cartToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Botão do carrinho clicado");
+        openCartModal();
+      });
+
+      if (cartModalClose) {
+        cartModalClose.addEventListener("click", closeCartModal);
+      }
+
+      cartOverlay.addEventListener("click", closeCartModal);
+
+      if (cartModalContinue) {
+        cartModalContinue.addEventListener("click", closeCartModal);
+      }
+
+      if (cartModalCheckout) {
+        cartModalCheckout.addEventListener("click", () => {
+          window.location.href = "carrinho.html";
+        });
+      }
+
+      function openCartModal() {
+        console.log("Abrindo modal do carrinho");
+        updateCartModal();
+        cartModal.classList.add("active");
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeCartModal() {
+        console.log("Fechando modal do carrinho");
+        cartModal.classList.remove("active");
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+
+      function updateCartModal() {
+        if (!cartModalItems || !cartModalTotalValue) {
+          console.error("Elementos do modal não encontrados");
+          return;
+        }
+
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        console.log("Carrinho:", carrinho);
+
+        cartModalItems.innerHTML = "";
+
+        if (carrinho.length === 0) {
+          cartModalItems.innerHTML = '<p class="text-center">Sua sacola está vazia.</p>';
+          cartModalTotalValue.textContent = "R$ 0,00";
+          return;
+        }
+
+        let subtotal = 0;
+
+        carrinho.forEach((item, index) => {
+          const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
+          const preco = Number.parseFloat(precoTexto);
+          const total = preco * item.quantidade;
+          subtotal += total;
+
+          const itemElement = document.createElement("div");
+          itemElement.className = "cart-modal-item";
+          itemElement.innerHTML = `
+            <img src="${item.imagem}" alt="${item.nome}">
+            <div class="cart-modal-item-info">
+              <h5 class="cart-modal-item-name">${item.nome}</h5>
+              <p class="cart-modal-item-price">${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
+            }</p>
+              <div class="cart-modal-item-quantity">
+                <button class="decrease-quantity" data-index="${index}">-</button>
+                <span>${item.quantidade}</span>
+                <button class="increase-quantity" data-index="${index}">+</button>
+                <button class="cart-modal-item-remove" data-index="${index}">
+                  <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+                </button>
+              </div>
             </div>
+          `;
 
-            <div class="footer-section">
-                <h2>Institucional</h2>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Como comprar</a></li>
-                    <li><a href="#">Envio</a></li>
-                    <li><a href="#">Segurança</a></li>
-                    <li><a href="#">Pagamento</a></li>
-                    <li><a href="#">Fale conosco</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                </ul>
-            </div>
+          cartModalItems.appendChild(itemElement);
+        });
 
-            <div class="footer-section">
-                <h2>Contato</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
-                </ul>
-            </div>
+        cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
 
-            <div class="footer-section">
-                <h2>Pagamento</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
-                </ul>
-            </div>
-        </div>
+        document.querySelectorAll(".decrease-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            decreaseQuantity(index);
+          });
+        });
 
-        <div class="footer-bottom">
-            <hr />
-            <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
-        </div>
-    </footer>
+        document.querySelectorAll(".increase-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            increaseQuantity(index);
+          });
+        });
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        document.querySelectorAll(".cart-modal-item-remove").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            removeFromCart(index);
+          });
+        });
+      }
+
+      function decreaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        if (carrinho[index].quantidade > 1) {
+          carrinho[index].quantidade--;
+          localStorage.setItem("carrinho", JSON.stringify(carrinho));
+          updateCartModal();
+        }
+      }
+
+      function increaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho[index].quantidade++;
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      function removeFromCart(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho.splice(index, 1);
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      window.cartFunctions = {
+        openCartModal,
+        closeCartModal,
+        updateCartModal
+      };
+
+      carregarProdutosCarrinho();
+    });
+
+    function carregarProdutosCarrinho() {
+      const produtosContainer = document.getElementById("produtos-container");
+      if (!produtosContainer) return;
+
+      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      const legenda = produtosContainer.querySelector(".card-legenda");
+      produtosContainer.innerHTML = "";
+      if (legenda) produtosContainer.appendChild(legenda);
+
+      if (carrinho.length === 0) {
+        const mensagemVazia = document.createElement("div");
+        mensagemVazia.className = "text-center my-5";
+        mensagemVazia.innerHTML = "<p>Sua sacola está vazia.</p>";
+        produtosContainer.appendChild(mensagemVazia);
+
+        atualizarResumoCompra(0);
+        return;
+      }
+
+      let subtotal = 0;
+
+      carrinho.forEach((item, index) => {
+        const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
+        const preco = Number.parseFloat(precoTexto);
+        const total = preco * item.quantidade;
+        subtotal += total;
+
+        const cardProduto = document.createElement("div");
+        cardProduto.className = "card-produto";
+        cardProduto.innerHTML = `
+          <img src="${item.imagem}" alt="${item.nome}">
+          <div class="produto-info">
+            <h5>${item.nome}</h5>
+            <p>Cód: ${item.id}</p>
+            ${item.tamanho ? `<p>Tamanho: ${item.tamanho}</p>` : ""}
+            ${item.cor ? `<p>Cor: ${item.cor}</p>` : ""}
+            <p class="preco">${item.preco}</p>
+          </div>
+          <div class="produto-total">
+            <input type="number" class="quantidade-input me-3" value="${item.quantidade}" min="1" data-index="${index}">
+            <span>R$ ${total.toFixed(2).replace(".", ",")}</span>
+            <span class="iconify fs-4" data-icon="mdi:trash-can-outline" style="cursor: pointer;" data-index="${index}"></span>
+          </div>
+        `;
+        produtosContainer.appendChild(cardProduto);
+      });
+
+      document.querySelectorAll(".quantidade-input").forEach((input) => {
+        input.addEventListener("change", function () {
+          const index = this.getAttribute("data-index");
+          const novaQuantidade = parseInt(this.value);
+
+          if (novaQuantidade < 1) {
+            this.value = 1;
+            return;
+          }
+
+          atualizarQuantidadeProduto(index, novaQuantidade);
+        });
+      });
+
+      document.querySelectorAll('[data-icon="mdi:trash-can-outline"]').forEach((botao) => {
+        botao.addEventListener("click", function () {
+          const index = this.getAttribute("data-index");
+          removerProduto(index);
+        });
+      });
+
+      atualizarResumoCompra(subtotal);
+    }
+
+    function atualizarQuantidadeProduto(index, quantidade) {
+      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho[index].quantidade = quantidade;
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      carregarProdutosCarrinho();
+    }
+
+    function removerProduto(index) {
+      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho.splice(index, 1);
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      carregarProdutosCarrinho();
+    }
+
+    function atualizarResumoCompra(subtotal) {
+      const frete = subtotal > 0 ? 20 : 0;
+      const total = subtotal + frete;
+
+      document.getElementById("resumo-subtotal").textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
+      document.getElementById("resumo-frete").textContent = `R$ ${frete.toFixed(2).replace(".", ",")}`;
+      document.getElementById("resumo-total").textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
+
+      const btnAvancar = document.querySelector(".btn-avancar");
+      if (btnAvancar) {
+        if (subtotal === 0) {
+          btnAvancar.disabled = true;
+          btnAvancar.style.opacity = "0.5";
+          btnAvancar.style.cursor = "not-allowed";
+        } else {
+          btnAvancar.disabled = false;
+          btnAvancar.style.opacity = "1";
+          btnAvancar.style.cursor = "pointer";
+        }
+      }
+    }
+  </script>
 </body>
+
 </html>

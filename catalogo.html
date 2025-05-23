@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sombra Streetwear</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>Catálogo - Sombra Streetwear</title>
+  <link rel="stylesheet" href="https: cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-  <script src="Js/breadcrumb.js" defer></script>
-
+  <script src="https: code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
+
 <body>
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top bg-black shadow-sm">
     <div class="container-fluid justify-content-between px-4">
       <div class="d-flex align-items-center gap-3">
-        <a href="menu.html">
+        <a href="#" id="menu-toggle">
           <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
         </a>
-        <a href="#">
-          <span class="iconify text-white fs-3" data-icon="mdi:magnify"></span>
-        </a>
+        <div class="search-container">
+          <form id="search-form" class="d-flex">
+            <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
+            <button type="submit" class="search-button">
+              <span class="iconify" data-icon="mdi:magnify"></span>
+            </button>
+          </form>
+        </div>
       </div>
       <a href="index.html">
         <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
@@ -31,9 +36,44 @@
     </div>
   </nav>
 
+  <!-- Menu Dropdown -->
+  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none; position: absolute; width: 100%; z-index: 1000;">
+    <div class="row">
+      <div class="col">
+        <h6 class="fw-bold">Categoria</h6>
+        <p><a href="#" data-categoria="camiseta">Camiseta</a><br>
+          <a href="#" data-categoria="moletom">Moletom</a><br>
+          <a href="#" data-categoria="calca">Calças</a><br>
+          <a href="#" data-categoria="bag">Bags</a><br>
+          <a href="#" data-categoria="bone">Bonés</a><br>
+          <a href="#" data-categoria="tenis">Tênis</a>
+        </p>
+      </div>
+      <div class="col">
+        <h6 class="fw-bold">Marcas</h6>
+        <p><a href="#" data-marca="kenner">Kenner</a><br>
+          <a href="#" data-marca="norden">Norden</a><br>
+          <a href="#" data-marca="vans">Vans</a><br>
+          <a href="#" data-marca="volcom">Volcom</a><br>
+          <a href="#" data-marca="blunt">Blunt</a><br>
+          <a href="#" data-marca="chronic">Chronic</a><br>
+          <a href="#" data-marca="tripside">Tripside</a>
+        </p>
+      </div>
+      <div class="col">
+        <h6 class="fw-bold">Coleção</h6>
+        <p><a href="#" data-colecao="blunt-summer">Blunt Summer</a><br>
+          <a href="#" data-colecao="seven-sins">Seven Sins</a><br>
+          <a href="#" data-colecao="chronic-setembro">Chronic Setembro</a><br>
+          <a href="#" data-colecao="vans-fall">Vans Fall</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- Breadcrumb -->
   <div class="container" style="margin-top: 85px;">
-    <p id="breadcrumb" style="font-weight: 300; font-size: 20px; color: #555;">Carregando caminho...</p>
+    <p id="breadcrumb" style="font-weight: 300; font-size: 20px; color: #555;">Home > Catálogo</p>
   </div>
 
   <!-- Título -->
@@ -52,8 +92,11 @@
             Categoria <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Camisetas</a></li>
-            <li><a class="dropdown-item" href="#">Moletons</a></li>
+            <li><a class="dropdown-item" href="#" data-categoria="camiseta">Camisetas</a></li>
+            <li><a class="dropdown-item" href="#" data-categoria="moletom">Moletons</a></li>
+            <li><a class="dropdown-item" href="#" data-categoria="calca">Calças</a></li>
+            <li><a class="dropdown-item" href="#" data-categoria="bone">Bonés</a></li>
+            <li><a class="dropdown-item" href="#" data-categoria="tenis">Tênis</a></li>
           </ul>
         </div>
         <div class="dropdown">
@@ -61,8 +104,10 @@
             Cor <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Preto</a></li>
-            <li><a class="dropdown-item" href="#">Branco</a></li>
+            <li><a class="dropdown-item" href="#" data-cor="preto">Preto</a></li>
+            <li><a class="dropdown-item" href="#" data-cor="branco">Branco</a></li>
+            <li><a class="dropdown-item" href="#" data-cor="vermelho">Vermelho</a></li>
+            <li><a class="dropdown-item" href="#" data-cor="azul">Azul</a></li>
           </ul>
         </div>
         <div class="dropdown">
@@ -70,9 +115,10 @@
             Tamanho <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">P</a></li>
-            <li><a class="dropdown-item" href="#">M</a></li>
-            <li><a class="dropdown-item" href="#">G</a></li>
+            <li><a class="dropdown-item" href="#" data-tamanho="p">P</a></li>
+            <li><a class="dropdown-item" href="#" data-tamanho="m">M</a></li>
+            <li><a class="dropdown-item" href="#" data-tamanho="g">G</a></li>
+            <li><a class="dropdown-item" href="#" data-tamanho="gg">GG</a></li>
           </ul>
         </div>
         <div class="dropdown">
@@ -80,22 +126,24 @@
             Marca <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Thrasher</a></li>
-            <li><a class="dropdown-item" href="#">Volcom</a></li>
+            <li><a class="dropdown-item" href="#" data-marca="thrasher">Thrasher</a></li>
+            <li><a class="dropdown-item" href="#" data-marca="volcom">Volcom</a></li>
+            <li><a class="dropdown-item" href="#" data-marca="chronic">Chronic</a></li>
+            <li><a class="dropdown-item" href="#" data-marca="vans">Vans</a></li>
           </ul>
         </div>
       </div>
 
       <div class="col-md-3 d-flex justify-content-end align-items-center">
-        <span class="me-2 text-secondary" style="font-size: 20px; font-weight: 400;">ORDENAR POR:</span>
+        <span class="me-2 text-secondary d-none d-md-block" style="font-size: 20px; font-weight: 400;">ORDENAR POR:</span>
         <div class="dropdown">
           <button class="btn btn-outline-dark dropdown-toggle" style="border-radius: 25px; font-size: 20px; font-weight: 400;" type="button" data-bs-toggle="dropdown">
             Mais vendidos <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Mais recentes</a></li>
-            <li><a class="dropdown-item" href="#">Menor Preço</a></li>
-            <li><a class="dropdown-item" href="#">Maior Preço</a></li>
+            <li><a class="dropdown-item" href="#" data-ordem="recentes">Mais recentes</a></li>
+            <li><a class="dropdown-item" href="#" data-ordem="menor-preco">Menor Preço</a></li>
+            <li><a class="dropdown-item" href="#" data-ordem="maior-preco">Maior Preço</a></li>
           </ul>
         </div>
       </div>
@@ -103,110 +151,67 @@
 
     <div class="row mt-3">
       <div class="col">
-        <p class="text-secondary" style="font-size: 20px; font-weight: 300;">12 produtos encontrados</p>
+        <p class="text-secondary produtos-encontrados" style="font-size: 20px; font-weight: 300;">12 produtos encontrados</p>
       </div>
     </div>
   </div>
 
-  <section class="carrossel-container">
-  <h2 class="categoria">Lançamentos</h2>
-
-  <div class="cards-wrapper">
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img1.jpg" alt="Produto 1">
-      <div class="info">
-        <h3 class="nome">Camiseta Volcom Stone - Branca</h3>
-        <p class="preco">R$ 197,99</p>
-      </div>
-    </a>
-    </div>
-
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img2.jpg" alt="Produto 2">
-      <div class="info">
-        <h3 class="nome">Camiseta Thrasher Fire - Preta</h3>
-        <p class="preco">R$ 189,90</p>
-      </div>
-    </a>
-    </div>
-
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img3.jpg" alt="Produto 2">
-      <div class="info">
-        <h3 class="nome">Camiseta Thrasher Fire - Preta</h3>
-        <p class="preco">R$ 189,90</p>
-      </div>  
-    </a>
-    </div>
-
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img4.jpg" alt="Produto 2">
-      <div class="info">
-        <h3 class="nome">Camiseta Thrasher Fire - Preta</h3>
-        <p class="preco">R$ 189,90</p>
-      </div>  
-    </a>
-    </div>
-   
+  <!-- Resultados da Pesquisa -->
+  <div class="container mb-5" id="resultados-pesquisa">
   </div>
-</section>
 
-  <!-- Paginação -->
-<div class="d-flex justify-content-center my-5 gap-2">
-  <a href="resultado1.html" class="page-box active">1</a>
-  <a href="resultado2.html" class="page-box">2</a>
-  <a href="resultado3.html" class="page-box">3</a>
-</div>
 
+  <div class="d-flex justify-content-center my-5 gap-2">
+    <a href="#" class="page-box active" data-page="1">1</a>
+    <a href="#" class="page-box" data-page="2">2</a>
+    <a href="#" class="page-box" data-page="3">3</a>
+  </div>
 
   <!-- Footer -->
   <footer class="footer-container">
-        <div class="footer">
-            <div class="footer-section">
-                <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
-            </div>
+    <div class="footer">
+      <div class="footer-section">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+      </div>
 
-            <div class="footer-section">
-                <h2>Institucional</h2>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Como comprar</a></li>
-                    <li><a href="#">Envio</a></li>
-                    <li><a href="#">Segurança</a></li>
-                    <li><a href="#">Pagamento</a></li>
-                    <li><a href="#">Fale conosco</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                </ul>
-            </div>
+      <div class="footer-section">
+        <h2>Institucional</h2>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Como comprar</a></li>
+          <li><a href="#">Envio</a></li>
+          <li><a href="#">Segurança</a></li>
+          <li><a href="#">Pagamento</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-section">
-                <h2>Contato</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
-                </ul>
-            </div>
+      <div class="footer-section">
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-section">
-                <h2>Pagamento</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
-                </ul>
-            </div>
-        </div>
+      <div class="footer-section">
+        <h2>Pagamento</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="footer-bottom">
-            <hr />
-            <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
-        </div>
-    </footer>
+    <div class="footer-bottom">
+      <hr />
+      <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
+    </div>
+  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https: cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
-
+  <script src="breadcrumb.js"></script>
 </body>
+
 </html>
