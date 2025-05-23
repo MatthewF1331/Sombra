@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,175 +9,241 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
-<body>
 
- <!-- NAVBAR -->
+<body>
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top bg-black shadow-sm">
-  <div class="container-fluid justify-content-between px-4">
-    <div class="d-flex align-items-center gap-3">
-      <a href="menu.html">
-        <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
+    <div class="container-fluid justify-content-between px-4">
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" id="menu-toggle">
+          <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
+        </a>
+        <div class="search-container">
+          <form id="search-form" class="d-flex">
+            <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
+            <button type="submit" class="search-button">
+              <span class="iconify" data-icon="mdi:magnify"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+      <a href="index.html">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
       </a>
-      <a href="catalogo.html">
-        <span class="iconify text-white fs-3" data-icon="mdi:magnify"></span>
+      <a href="#" id="cart-toggle">
+        <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
       </a>
     </div>
-    <a href="index.html">
-      <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
-    </a>
-    <a href="carrinho.html">
-      <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
-    </a>
-  </div>
-</nav>
+  </nav>
 
-  <div class="container mt-5 pt-5">
+  <!-- Menu Dropdown -->
+  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none; position: absolute; width: 100%; z-index: 1000;">
+    <div class="row">
+      <div class="col">
+        <h6 class="fw-bold">Categoria</h6>
+        <p><a href="#" data-categoria="camiseta">Camiseta</a><br>
+          <a href="#" data-categoria="moletom">Moletom</a><br>
+          <a href="#" data-categoria="calca">Calças</a><br>
+          <a href="#" data-categoria="bag">Bags</a><br>
+          <a href="#" data-categoria="bone">Bonés</a><br>
+          <a href="#" data-categoria="tenis">Tênis</a>
+        </p>
+      </div>
+      <div class="col">
+        <h6 class="fw-bold">Marcas</h6>
+        <p><a href="#" data-marca="kenner">Kenner</a><br>
+          <a href="#" data-marca="norden">Norden</a><br>
+          <a href="#" data-marca="vans">Vans</a><br>
+          <a href="#" data-marca="volcom">Volcom</a><br>
+          <a href="#" data-marca="blunt">Blunt</a><br>
+          <a href="#" data-marca="chronic">Chronic</a><br>
+          <a href="#" data-marca="tripside">Tripside</a>
+        </p>
+      </div>
+      <div class="col">
+        <h6 class="fw-bold">Coleção</h6>
+        <p><a href="#" data-colecao="blunt-summer">Blunt Summer</a><br>
+          <a href="#" data-colecao="seven-sins">Seven Sins</a><br>
+          <a href="#" data-colecao="chronic-setembro">Chronic Setembro</a><br>
+          <a href="#" data-colecao="vans-fall">Vans Fall</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal do Carrinho -->
+  <div class="overlay" id="cart-overlay"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h4>Minha Sacola</h4>
+      <button class="cart-modal-close" id="cart-modal-close">&times;</button>
+    </div>
+    <div class="cart-modal-items" id="cart-modal-items">
+    </div>
+    <div class="cart-modal-footer">
+      <div class="cart-modal-total">
+        <span>Total:</span>
+        <span id="cart-modal-total-value">R$ 0,00</span>
+      </div>
+      <div class="cart-modal-buttons">
+        <button class="cart-modal-checkout" id="cart-modal-checkout">Finalizar Compra</button>
+        <button class="cart-modal-continue" id="cart-modal-continue">Continuar Comprando</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="container" style="margin-top: 85px;">
+    <p id="breadcrumb" style="font-weight: 300; font-size: 20px; color: #555;">Home > Sacola > Checkout</p>
+  </div>
+
+  <div class="container mt-3 pt-3">
     <h2 class="checkout-title mb-4">CHECKOUT</h2>
     <div class="d-flex flex-wrap gap-4">
 
-    <!-- CARD 1: Dados para entrega -->
-    <div class="checkout-card">
-      <h4>Dados para entrega</h4>
-      <div class="d-flex gap-4 mb-3">
-        <div style="width: 624px;">
-          <label class="form-label">CEP</label>
-          <input type="text" class="form-control" placeholder="00000-000">
+      <!-- CARD 1: Dados para entrega -->
+      <div class="checkout-card">
+        <h4>Dados para entrega</h4>
+        <div class="d-flex flex-wrap gap-4 mb-3">
+          <div style="width: 100%; max-width: 624px;">
+            <label class="form-label">CEP</label>
+            <input type="text" class="form-control" placeholder="00000-000">
+          </div>
+          <div style="width: 100%; max-width: 270px;">
+            <label class="form-label">Número</label>
+            <input type="text" class="form-control" placeholder="N°000">
+          </div>
         </div>
-        <div style="width: 270px;">
-          <label class="form-label">Número</label>
-          <input type="text" class="form-control" placeholder="N°000">
+        <div class="d-flex flex-wrap gap-4 mb-3">
+          <div style="width: 100%; max-width: 624px;">
+            <label class="form-label">Endereço</label>
+            <input type="text" class="form-control" placeholder="Rua. Exemplo">
+          </div>
+          <div style="width: 100%; max-width: 270px;">
+            <label class="form-label">Bairro</label>
+            <input type="text" class="form-control" placeholder="Exemplo">
+          </div>
+        </div>
+        <div class="d-flex flex-wrap gap-4">
+          <div style="width: 100%; max-width: 302px;">
+            <label class="form-label">Cidade</label>
+            <input type="text" class="form-control" placeholder="Exemplo Cidade">
+          </div>
+          <div style="width: 100%; max-width: 302px;">
+            <label class="form-label">Estado</label>
+            <input type="text" class="form-control" placeholder="Minas Gerais">
+          </div>
+          <div style="width: 100%; max-width: 302px;">
+            <label class="form-label">Complemento</label>
+            <input type="text" class="form-control" placeholder="Complemento">
+          </div>
         </div>
       </div>
-      <div class="d-flex gap-4 mb-3">
-        <div style="width: 624px;">
-          <label class="form-label">Endereço</label>
-          <input type="text" class="form-control" placeholder="Rua. Exemplo">
+
+      <!-- CARD 2: Dados Pessoais -->
+      <div class="checkout-card">
+        <h4>Dados Pessoais</h4>
+        <div class="mb-3" style="width: 100%; max-width: 624px;">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" placeholder="João da Silva">
         </div>
-        <div style="width: 270px;">
-          <label class="form-label">Bairro</label>
-          <input type="text" class="form-control" placeholder="Exemplo">
+        <div class="mb-3" style="width: 100%; max-width: 624px;">
+          <label class="form-label">CPF</label>
+          <input type="text" class="form-control" placeholder="000.000.000-00">
+        </div>
+        <div class="d-flex flex-wrap gap-4">
+          <div style="width: 100%; max-width: 302px;">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-control" placeholder="exemplo@email.com">
+          </div>
+          <div style="width: 100%; max-width: 302px;">
+            <label class="form-label">WhatsApp</label>
+            <input type="text" class="form-control" placeholder="(99) 9 9999-9999">
+          </div>
         </div>
       </div>
-      <div class="d-flex gap-4">
-        <div style="width: 302px;">
-          <label class="form-label">Cidade</label>
-          <input type="text" class="form-control" placeholder="Exemplo Cidade">
-        </div>
-        <div style="width: 302px;">
-          <label class="form-label">Estado</label>
-          <input type="text" class="form-control" placeholder="Minas Gerais">
-        </div>
-        <div style="width: 302px;">
-          <label class="form-label">Complemento</label>
-          <input type="text" class="form-control" placeholder="Complemento">
+
+      <!-- CARD 3: Pagamento -->
+      <div class="checkout-card">
+        <h4>Pagamento</h4>
+        <label class="form-label mb-2">Como deseja pagar?</label>
+        <div class="pagamento-opcao" onclick="selecionarPagamento(this)">
+          <input type="radio" name="pagamento" />
+          <div class="pagamento-texto">
+            <strong>Combinar via WhatsApp</strong>
+            <p>Pagamento combinado via WhatsApp</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- CARD 2: Dados Pessoais -->
-    <div class="checkout-card">
-      <h4>Dados Pessoais</h4>
-      <div class="mb-3" style="width: 624px;">
-        <label class="form-label">Nome</label>
-        <input type="text" class="form-control" placeholder="João da Silva">
+    <div class="resumo-compra">
+      <h4>RESUMO DA COMPRA</h4>
+      <div class="resumo-item">
+        <span>Subtotal</span>
+        <span>R$ 200,00</span>
       </div>
-      <div class="mb-3" style="width: 624px;">
-        <label class="form-label">CPF</label>
-        <input type="text" class="form-control" placeholder="000.000.000-00">
+      <div class="resumo-item">
+        <span>Entrega</span>
+        <span>R$ 20,00</span>
       </div>
-      <div class="d-flex gap-4">
-        <div style="width: 302px;">
-          <label class="form-label">E-mail</label>
-          <input type="email" class="form-control" placeholder="exemplo@email.com">
-        </div>
-        <div style="width: 302px;">
-          <label class="form-label">WhatsApp</label>
-          <input type="text" class="form-control" placeholder="(99) 9 9999-9999">
-        </div>
+      <div class="resumo-item resumo-total">
+        <span>TOTAL</span>
+        <span>R$ 220,00</span>
       </div>
-    </div>
 
-    <!-- CARD 3: Pagamento -->
-    <div class="checkout-card">
-      <h4>Pagamento</h4>
-      <label class="form-label mb-2">Como deseja pagar?</label>
-      <div class="pagamento-opcao" onclick="selecionarPagamento(this)">
-        <input type="radio" name="pagamento" />
-        <div class="pagamento-texto">
-          <strong>Combinar via WhatsApp</strong>
-          <p>Pagamento combinado via WhatsApp</p>
-        </div>
-      </div>
+      <button class="btn-avancar">Avançar</button>
+
+      <a class="link-comprar">Continuar comprando</a>
     </div>
   </div>
 
 
-
-   <!-- Resumo da Compra -->
-      <div class="resumo-compra">
-        <h4>RESUMO DA COMPRA</h4>
-        <div class="resumo-item">
-          <span>Subtotal</span>
-          <span>R$ 200,00</span>
-        </div>
-        <div class="resumo-item">
-          <span>Entrega</span>
-          <span>R$ 20,00</span>
-        </div>
-        <div class="resumo-item resumo-total">
-          <span>TOTAL</span>
-          <span>R$ 220,00</span>
-        </div>
-
-        <button class="btn-avancar">Avançar</button>
-
-        <a class="link-comprar">Continuar comprando</a>
-      </div>
-  </div>
-</div>
-
-
-  <!-- Footer -->
   <footer class="footer-container">
-        <div class="footer">
-            <div class="footer-section">
-                <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
-            </div>
+    <div class="footer">
+      <div class="footer-section">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+      </div>
 
-            <div class="footer-section">
-                <h2>Institucional</h2>
-                <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Como comprar</a></li>
-                <li><a href="#">Envio</a></li>
-                <li><a href="#">Segurança</a></li>
-                <li><a href="#">Pagamento</a></li>
-                <li><a href="#">Fale conosco</a></li>
-                <li><a href="#">Sobre Nós</a></li>
-            </ul>
-        </div>
+      <div class="footer-section">
+        <h2>Institucional</h2>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Como comprar</a></li>
+          <li><a href="#">Envio</a></li>
+          <li><a href="#">Segurança</a></li>
+          <li><a href="#">Pagamento</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+        </ul>
+      </div>
 
-        <div class="footer-section">
-            <h2>Contato</h2>
-            <ul>
-                <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
-            </ul>
-        </div>
+      <div class="footer-section">
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
+        </ul>
+      </div>
 
-        <div class="footer-section">
-            <h2>Pagamento</h2>
-            <ul>
-                <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
-            </ul>
-        </div>
+      <div class="footer-section">
+        <h2>Pagamento</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
+        </ul>
+      </div>
     </div>
 
     <div class="footer-bottom">
-        <hr />
-        <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
+      <hr />
+      <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
     </div>
-</footer>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="checkout.js"></script>
+  <script src="breadcrumb.js"></script>
 
   <script>
     function selecionarPagamento(el) {
@@ -187,6 +254,163 @@
       el.classList.add('selected');
       el.querySelector('input[type="radio"]').checked = true;
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartToggle = document.getElementById("cart-toggle");
+      const cartModal = document.getElementById("cart-modal");
+      const cartOverlay = document.getElementById("cart-overlay");
+      const cartModalClose = document.getElementById("cart-modal-close");
+      const cartModalContinue = document.getElementById("cart-modal-continue");
+      const cartModalCheckout = document.getElementById("cart-modal-checkout");
+      const cartModalItems = document.getElementById("cart-modal-items");
+      const cartModalTotalValue = document.getElementById("cart-modal-total-value");
+
+      // Verificar se os elementos existem
+      if (!cartToggle || !cartModal || !cartOverlay) {
+        console.error("Elementos do carrinho não encontrados");
+        return;
+      }
+
+      console.log("Inicializando carrinho modal...");
+
+      cartToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Botão do carrinho clicado");
+        openCartModal();
+      });
+
+      if (cartModalClose) {
+        cartModalClose.addEventListener("click", closeCartModal);
+      }
+
+      cartOverlay.addEventListener("click", closeCartModal);
+
+      if (cartModalContinue) {
+        cartModalContinue.addEventListener("click", closeCartModal);
+      }
+
+      if (cartModalCheckout) {
+        cartModalCheckout.addEventListener("click", () => {
+          window.location.href = "carrinho.html";
+        });
+      }
+
+      function openCartModal() {
+        console.log("Abrindo modal do carrinho");
+        updateCartModal();
+        cartModal.classList.add("active");
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden"; 
+      }
+
+      function closeCartModal() {
+        console.log("Fechando modal do carrinho");
+        cartModal.classList.remove("active");
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = ""; 
+      }
+
+      function updateCartModal() {
+        if (!cartModalItems || !cartModalTotalValue) {
+          console.error("Elementos do modal não encontrados");
+          return;
+        }
+
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        console.log("Carrinho:", carrinho);
+
+        cartModalItems.innerHTML = "";
+
+        if (carrinho.length === 0) {
+          cartModalItems.innerHTML = '<p class="text-center">Sua sacola está vazia.</p>';
+          cartModalTotalValue.textContent = "R$ 0,00";
+          return;
+        }
+
+        let subtotal = 0;
+
+        carrinho.forEach((item, index) => {
+          const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
+          const preco = Number.parseFloat(precoTexto);
+          const total = preco * item.quantidade;
+          subtotal += total;
+
+          const itemElement = document.createElement("div");
+          itemElement.className = "cart-modal-item";
+          itemElement.innerHTML = `
+            <img src="${item.imagem}" alt="${item.nome}">
+            <div class="cart-modal-item-info">
+              <h5 class="cart-modal-item-name">${item.nome}</h5>
+              <p class="cart-modal-item-price">${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
+            }</p>
+              <div class="cart-modal-item-quantity">
+                <button class="decrease-quantity" data-index="${index}">-</button>
+                <span>${item.quantidade}</span>
+                <button class="increase-quantity" data-index="${index}">+</button>
+                <button class="cart-modal-item-remove" data-index="${index}">
+                  <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+                </button>
+              </div>
+            </div>
+          `;
+
+          cartModalItems.appendChild(itemElement);
+        });
+
+        cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
+
+        document.querySelectorAll(".decrease-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            decreaseQuantity(index);
+          });
+        });
+
+        document.querySelectorAll(".increase-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            increaseQuantity(index);
+          });
+        });
+
+        document.querySelectorAll(".cart-modal-item-remove").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            removeFromCart(index);
+          });
+        });
+      }
+
+      function decreaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        if (carrinho[index].quantidade > 1) {
+          carrinho[index].quantidade--;
+          localStorage.setItem("carrinho", JSON.stringify(carrinho));
+          updateCartModal();
+        }
+      }
+
+      function increaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho[index].quantidade++;
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      function removeFromCart(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho.splice(index, 1);
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      window.cartFunctions = {
+        openCartModal,
+        closeCartModal,
+        updateCartModal
+      };
+    });
   </script>
 </body>
+
 </html>

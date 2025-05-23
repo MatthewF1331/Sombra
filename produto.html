@@ -1,273 +1,372 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sombra Streetwear</title>
+  <title>Produto - Sombra Streetwear</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-
 </head>
+
 <body>
-
-<!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top bg-black shadow-sm">
-  <div class="container-fluid justify-content-between px-4">
-    <div class="d-flex align-items-center gap-3">
-      <a href="menu.html">
-        <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
+    <div class="container-fluid justify-content-between px-4">
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" id="menu-toggle">
+          <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
+        </a>
+        <div class="search-container">
+          <form id="search-form" class="d-flex">
+            <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
+            <button type="submit" class="search-button">
+              <span class="iconify" data-icon="mdi:magnify"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+      <a href="index.html">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
       </a>
-      <a href="catalogo.html">
-        <span class="iconify text-white fs-3" data-icon="mdi:magnify"></span>
+      <a href="#" id="cart-toggle">
+        <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
       </a>
     </div>
-    <a href="index.html">
-      <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
-    </a>
-    <a href="carrinho.html">
-      <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
-    </a>
-  </div>
-</nav>
+  </nav>
 
-
-<script src="produto.js"></script>
-
-<!-- DETALHES DO PRODUTO -->
-<div class="container-fluid mt-5 pt-5" id="detalhes-produto">
-  <div class="row px-4 py-5">
-    <!-- IMAGENS -->
-    <div class="col-lg-6 d-flex justify-content-end">
-      <div class="d-flex">
-        <div class="d-flex flex-column me-3">
-          <img src="assets/images/img1.jpg" class="img-miniatura"  alt="Miniatura 1">
-          <img src="assets/images/img1.jpg" class="img-miniatura"  alt="Miniatura 2">
-          <img src="assets/images/img1.jpg" class="img-miniatura"  alt="Miniatura 3">
-        </div>
-        <img src="" class="img-principal" id="imagem" alt="Produto Principal">
-      </div>
-    </div>
-
-    <!-- DETALHES -->
-    <div class="col-lg-6 d-flex flex-column justify-content-start">
-      <div class="mb-3">
-        <h2 class="fw-semibold" style="font-size: 24px;" id="nome"></h2>
-        <p class="text-muted" style="font-size: 16px;" id="id"></p>
-        <p class="fw-normal" style="font-size: 32px;" id="preco"></p>
-      </div>
-
-      <div class="mb-4">
-        <p class="fw-semibold mb-1" style="font-size: 12px;">Tamanhos</p>
-        <div class="d-flex">
-          <button class="tamanho-btn">P</button>
-          <button class="tamanho-btn">M</button>
-          <button class="tamanho-btn">G</button>
-          <button class="tamanho-btn">XG</button>
-          <button class="tamanho-btn">XXG</button>
-        </div>
-      </div>
-
-      <div class="mb-4">
-        <p class="fw-semibold mb-1" style="font-size: 12px;">Cores</p>
-        <div class="d-flex">
-          <div class="cor-opcao bg-danger"></div>
-          <div class="cor-opcao bg-dark"></div>
-          <div class="cor-opcao bg-primary"></div>
-          <div class="cor-opcao bg-success"></div>
-        </div>
-      </div>
-
-      <div class="d-flex align-items-center mb-4">
-        <input type="number" class="quantidade-input me-3" value="1" min="1">
-        <button class="btn-adicionar">Adicionar à Sacola</button>
-      </div>
-
-      <div>
-        <h4 class="fw-semibold" style="font-size: 20px;">Descrição</h4>
-        <p class="text-muted" style="font-size: 16px;" id="descricao">
+  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none; position: absolute; width: 100%; z-index: 1000;">
+    <div class="row">
+      <div class="col">
+        <h6 class="fw-bold">Categoria</h6>
+        <p><a href="#" data-categoria="camiseta">Camiseta</a><br>
+          <a href="#" data-categoria="moletom">Moletom</a><br>
+          <a href="#" data-categoria="calca">Calças</a><br>
+          <a href="#" data-categoria="bag">Bags</a><br>
+          <a href="#" data-categoria="bone">Bonés</a><br>
+          <a href="#" data-categoria="tenis">Tênis</a>
         </p>
       </div>
-
-      <div>
-        <h4 class="fw-semibold" style="font-size: 20px;">Detalhes</h4>
-        <p class="text-muted" style="font-size: 16px;">
-            <ul id="detalhes">
-            </ul>
+      <div class="col">
+        <h6 class="fw-bold">Marcas</h6>
+        <p><a href="#" data-marca="kenner">Kenner</a><br>
+          <a href="#" data-marca="norden">Norden</a><br>
+          <a href="#" data-marca="vans">Vans</a><br>
+          <a href="#" data-marca="volcom">Volcom</a><br>
+          <a href="#" data-marca="blunt">Blunt</a><br>
+          <a href="#" data-marca="chronic">Chronic</a><br>
+          <a href="#" data-marca="tripside">Tripside</a>
         </p>
       </div>
-
+      <div class="col">
+        <h6 class="fw-bold">Coleção</h6>
+        <p><a href="#" data-colecao="blunt-summer">Blunt Summer</a><br>
+          <a href="#" data-colecao="seven-sins">Seven Sins</a><br>
+          <a href="#" data-colecao="chronic-setembro">Chronic Setembro</a><br>
+          <a href="#" data-colecao="vans-fall">Vans Fall</a>
+        </p>
+      </div>
     </div>
   </div>
-</div>
 
-
-
-<!-- DETALHES DO PRODUTO 
-<div class="container-fluid mt-5 pt-5">
-  <div class="row px-4 py-5">
-
-    <div class="col-lg-6 d-flex justify-content-end">
-      <div class="d-flex">
-        <div class="d-flex flex-column me-3">
-          <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 1">
-          <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 2">
-          <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 3">
-        </div>
-        <img src="assets/images/img1.jpg" class="img-principal" alt="Produto Principal">
+  <div class="overlay" id="cart-overlay"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h4>Minha Sacola</h4>
+      <button class="cart-modal-close" id="cart-modal-close">&times;</button>
+    </div>
+    <div class="cart-modal-items" id="cart-modal-items">
+      <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
+    </div>
+    <div class="cart-modal-footer">
+      <div class="cart-modal-total">
+        <span>Total:</span>
+        <span id="cart-modal-total-value">R$ 0,00</span>
+      </div>
+      <div class="cart-modal-buttons">
+        <button class="cart-modal-checkout" id="cart-modal-checkout">Finalizar Compra</button>
+        <button class="cart-modal-continue" id="cart-modal-continue">Continuar Comprando</button>
       </div>
     </div>
+  </div>
 
+  <div class="container" style="margin-top: 85px;">
+    <p id="breadcrumb" style="font-weight: 300; font-size: 20px; color: #555;">Carregando caminho...</p>
+  </div>
 
-    <div class="col-lg-6 d-flex flex-column justify-content-start">
-      <div class="mb-3">
-        <h2 class="fw-semibold" style="font-size: 24px;">Camiseta Thrasher Fire - Preta</h2>
-        <p class="text-muted" style="font-size: 16px;">N3XZQWPY7</p>
-        <p class="fw-normal" style="font-size: 32px;">R$ 199,90</p>
-      </div>
-
-      <div class="mb-4">
-        <p class="fw-semibold mb-1" style="font-size: 12px;">Tamanhos</p>
+  <div class="container-fluid mt-3 pt-3" id="detalhes-produto">
+    <div class="row px-4 py-5">
+      <!-- IMAGENS -->
+      <div class="col-lg-6 d-flex justify-content-end">
         <div class="d-flex">
-          <button class="tamanho-btn">P</button>
-          <button class="tamanho-btn">M</button>
-          <button class="tamanho-btn">G</button>
-          <button class="tamanho-btn">XG</button>
-          <button class="tamanho-btn">XXG</button>
+          <div class="d-flex flex-column me-3">
+            <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 1">
+            <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 2">
+            <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 3">
+          </div>
+          <img src="/placeholder.svg" class="img-principal" id="imagem" alt="Produto Principal">
         </div>
       </div>
 
-      <div class="mb-4">
-        <p class="fw-semibold mb-1" style="font-size: 12px;">Cores</p>
-        <div class="d-flex">
-          <div class="cor-opcao bg-danger"></div>
-          <div class="cor-opcao bg-dark"></div>
-          <div class="cor-opcao bg-primary"></div>
-          <div class="cor-opcao bg-success"></div>
+      <div class="col-lg-6 d-flex flex-column justify-content-start">
+        <div class="mb-3">
+          <h2 class="fw-semibold" style="font-size: 24px;" id="nome"></h2>
+          <p class="text-muted" style="font-size: 16px;" id="id"></p>
+          <p class="fw-normal" style="font-size: 32px;" id="preco"></p>
+        </div>
+
+        <div class="mb-4">
+          <p class="fw-semibold mb-1" style="font-size: 12px;">Tamanhos</p>
+          <div class="d-flex">
+            <button class="tamanho-btn">P</button>
+            <button class="tamanho-btn">M</button>
+            <button class="tamanho-btn">G</button>
+            <button class="tamanho-btn">XG</button>
+            <button class="tamanho-btn">XXG</button>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <p class="fw-semibold mb-1" style="font-size: 12px;">Cores</p>
+          <div class="d-flex">
+            <div class="cor-opcao bg-danger" data-cor="vermelho"></div>
+            <div class="cor-opcao bg-dark" data-cor="preto"></div>
+            <div class="cor-opcao bg-primary" data-cor="azul"></div>
+            <div class="cor-opcao bg-success" data-cor="verde"></div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mb-4">
+          <input type="number" class="quantidade-input me-3" value="1" min="1">
+          <button class="btn-adicionar">Adicionar à Sacola</button>
+        </div>
+
+        <div>
+          <h4 class="fw-semibold" style="font-size: 20px;">Descrição</h4>
+          <p class="text-muted" style="font-size: 16px;" id="descricao">
+          </p>
+        </div>
+
+        <div>
+          <h4 class="fw-semibold" style="font-size: 20px;">Detalhes</h4>
+          <p class="text-muted" style="font-size: 16px;">
+          <ul id="detalhes">
+          </ul>
+          </p>
         </div>
       </div>
-
-      <div class="d-flex align-items-center mb-4">
-        <input type="number" class="quantidade-input me-3" value="1" min="1">
-        <button class="btn-adicionar">Adicionar à Sacola</button>
-      </div>
-
-      <div>
-        <h4 class="fw-semibold" style="font-size: 20px;">Descrição</h4>
-        <p class="text-muted" style="font-size: 16px;">
-          Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.
-        </p>
-      </div>
-
-      <div>
-        <h4 class="fw-semibold" style="font-size: 20px;">Detalhes</h4>
-        <p class="text-muted" style="font-size: 16px;">
-            <ul>
-                <li>Composição: 100% algodão</li>
-                <li>Modelagem regular</li>
-                <li>Manga curta</li>
-            </ul>
-        </p>
-      </div>
-
     </div>
   </div>
-</div>
--->
 
+  <section class="carrossel-container">
+    <h2 class="categoria">Veja Também</h2>
 
-
-<section class="carrossel-container">
-  <h2 class="categoria">Veja Também</h2>
-
-  <div class="cards-wrapper">
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img1.jpg" alt="Produto 1">
-      <div class="info">
-        <h3 class="nome">Camiseta Volcom Stone - Branca</h3>
-        <p class="preco">R$ 197,99</p>
-      </div>
-    </a>
+    <div class="cards-wrapper" id="produtos-relacionados">
     </div>
+  </section>
 
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img2.jpg" alt="Produto 2">
-      <div class="info">
-        <h3 class="nome">Camiseta Thrasher Fire - Preta</h3>
-        <p class="preco">R$ 189,90</p>
-      </div>
-    </a>
-    </div>
-
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img3.jpg" alt="Produto 2">
-      <div class="info">
-        <h3 class="nome">Camiseta Thrasher Fire - Preta</h3>
-        <p class="preco">R$ 189,90</p>
-      </div>  
-    </a>
-    </div>
-
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img4.jpg" alt="Produto 2">
-      <div class="info">
-        <h3 class="nome">Camiseta Thrasher Fire - Preta</h3>
-        <p class="preco">R$ 189,90</p>
-      </div>  
-    </a>
-    </div>
-   
-  </div>
-</section>
-
-<!-- Footer -->
+  <!-- Footer -->
   <footer class="footer-container">
-        <div class="footer">
-            <div class="footer-section">
-                <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
-            </div>
+    <div class="footer">
+      <div class="footer-section">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+      </div>
 
-            <div class="footer-section">
-                <h2>Institucional</h2>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Como comprar</a></li>
-                    <li><a href="#">Envio</a></li>
-                    <li><a href="#">Segurança</a></li>
-                    <li><a href="#">Pagamento</a></li>
-                    <li><a href="#">Fale conosco</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                </ul>
-            </div>
+      <div class="footer-section">
+        <h2>Institucional</h2>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Como comprar</a></li>
+          <li><a href="#">Envio</a></li>
+          <li><a href="#">Segurança</a></li>
+          <li><a href="#">Pagamento</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-section">
-                <h2>Contato</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
-                </ul>
-            </div>
+      <div class="footer-section">
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-section">
-                <h2>Pagamento</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
-                </ul>
-            </div>
-        </div>
+      <div class="footer-section">
+        <h2>Pagamento</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="footer-bottom">
-            <hr />
-            <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
-        </div>
-    </footer>
+    <div class="footer-bottom">
+      <hr />
+      <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="Js/script.js"></script>
+  <script src="script.js"></script>
+  <script src="produto.js"></script>
+  <script src="breadcrumb.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartToggle = document.getElementById("cart-toggle");
+      const cartModal = document.getElementById("cart-modal");
+      const cartOverlay = document.getElementById("cart-overlay");
+      const cartModalClose = document.getElementById("cart-modal-close");
+      const cartModalContinue = document.getElementById("cart-modal-continue");
+      const cartModalCheckout = document.getElementById("cart-modal-checkout");
+      const cartModalItems = document.getElementById("cart-modal-items");
+      const cartModalTotalValue = document.getElementById("cart-modal-total-value");
 
+      if (!cartToggle || !cartModal || !cartOverlay) {
+        console.error("Elementos do carrinho não encontrados");
+        return;
+      }
+
+      console.log("Inicializando carrinho modal...");
+
+      cartToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Botão do carrinho clicado");
+        openCartModal();
+      });
+
+      if (cartModalClose) {
+        cartModalClose.addEventListener("click", closeCartModal);
+      }
+
+      cartOverlay.addEventListener("click", closeCartModal);
+
+      if (cartModalContinue) {
+        cartModalContinue.addEventListener("click", closeCartModal);
+      }
+
+      if (cartModalCheckout) {
+        cartModalCheckout.addEventListener("click", () => {
+          window.location.href = "carrinho.html";
+        });
+      }
+
+      function openCartModal() {
+        console.log("Abrindo modal do carrinho");
+        updateCartModal();
+        cartModal.classList.add("active");
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden"; // Impedir rolagem da página
+      }
+
+      function closeCartModal() {
+        console.log("Fechando modal do carrinho");
+        cartModal.classList.remove("active");
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = ""; 
+      }
+
+      function updateCartModal() {
+        if (!cartModalItems || !cartModalTotalValue) {
+          console.error("Elementos do modal não encontrados");
+          return;
+        }
+
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        console.log("Carrinho:", carrinho);
+
+        cartModalItems.innerHTML = "";
+
+        if (carrinho.length === 0) {
+          cartModalItems.innerHTML = '<p class="text-center">Sua sacola está vazia.</p>';
+          cartModalTotalValue.textContent = "R$ 0,00";
+          return;
+        }
+
+        let subtotal = 0;
+
+        carrinho.forEach((item, index) => {
+          const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
+          const preco = Number.parseFloat(precoTexto);
+          const total = preco * item.quantidade;
+          subtotal += total;
+
+          const itemElement = document.createElement("div");
+          itemElement.className = "cart-modal-item";
+          itemElement.innerHTML = `
+            <img src="${item.imagem}" alt="${item.nome}">
+            <div class="cart-modal-item-info">
+              <h5 class="cart-modal-item-name">${item.nome}</h5>
+              <p class="cart-modal-item-price">${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
+            }</p>
+              <div class="cart-modal-item-quantity">
+                <button class="decrease-quantity" data-index="${index}">-</button>
+                <span>${item.quantidade}</span>
+                <button class="increase-quantity" data-index="${index}">+</button>
+                <button class="cart-modal-item-remove" data-index="${index}">
+                  <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+                </button>
+              </div>
+            </div>
+          `;
+
+          cartModalItems.appendChild(itemElement);
+        });
+
+        cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
+
+        document.querySelectorAll(".decrease-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            decreaseQuantity(index);
+          });
+        });
+
+        document.querySelectorAll(".increase-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            increaseQuantity(index);
+          });
+        });
+
+        document.querySelectorAll(".cart-modal-item-remove").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            removeFromCart(index);
+          });
+        });
+      }
+
+      function decreaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        if (carrinho[index].quantidade > 1) {
+          carrinho[index].quantidade--;
+          localStorage.setItem("carrinho", JSON.stringify(carrinho));
+          updateCartModal();
+        }
+      }
+
+      function increaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho[index].quantidade++;
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      function removeFromCart(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho.splice(index, 1);
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      window.cartFunctions = {
+        openCartModal,
+        closeCartModal,
+        updateCartModal
+      };
+    });
+  </script>
 </body>
+
 </html>
