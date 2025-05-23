@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,44 +13,102 @@
 <body>
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top bg-black shadow-sm">
-  <div class="container-fluid justify-content-between px-4">
-    <div class="d-flex align-items-center gap-3">
-      <a href="menu.html">
-        <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
+    <div class="container-fluid justify-content-between px-4">
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" id="menu-toggle">
+          <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
+        </a>
+        <div class="search-container">
+          <form id="search-form" class="d-flex">
+            <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
+            <button type="submit" class="search-button">
+              <span class="iconify" data-icon="mdi:magnify"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+      <a href="index.html">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
       </a>
-      <a href="catalogo.html">
-        <span class="iconify text-white fs-3" data-icon="mdi:magnify"></span>
+      <a href="#" id="cart-toggle">
+        <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
       </a>
     </div>
-    <a href="index.html">
-      <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
-    </a>
-    <a href="carrinho.html">
-      <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
-    </a>
-  </div>
-</nav>
-
-  <!-- Menu Dropdown 
-  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none;">
-    <div class="row">
-      <div class="col">
-        <h6 class="fw-bold">Categoria</h6>
-        <p>Camiseta<br>Moletom<br>Calças<br>Bags<br>Bonés<br>Tênis</p>
+  </nav>
+  <!-- Menu Dropdown Lateral -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <div id="menu-dropdown">
+    <div class="menu-header">
+      <h4>Menu</h4>
+      <button class="menu-close" id="menu-close">&times;</button>
+    </div>
+    <div class="menu-categories">
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Categoria
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?categoria=camiseta" data-categoria="camiseta">Camiseta</a></li>
+          <li><a href="catalogo.html?categoria=moletom" data-categoria="moletom">Moletom</a></li>
+          <li><a href="catalogo.html?categoria=calca" data-categoria="calca">Calças</a></li>
+          <li><a href="catalogo.html?categoria=bag" data-categoria="bag">Bags</a></li>
+          <li><a href="catalogo.html?categoria=bone" data-categoria="bone">Bonés</a></li>
+          <li><a href="catalogo.html?categoria=tenis" data-categoria="tenis">Tênis</a></li>
+        </ul>
       </div>
-      <div class="col">
-        <h6 class="fw-bold">Marcas</h6>
-        <p>Kenner<br>Norden<br>Vans<br>Volcom<br>Blunt<br>Chronic<br>Tripside</p>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Marcas
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?marca=kenner" data-marca="kenner">Kenner</a></li>
+          <li><a href="catalogo.html?marca=norden" data-marca="norden">Norden</a></li>
+          <li><a href="catalogo.html?marca=vans" data-marca="vans">Vans</a></li>
+          <li><a href="catalogo.html?marca=volcom" data-marca="volcom">Volcom</a></li>
+          <li><a href="catalogo.html?marca=blunt" data-marca="blunt">Blunt</a></li>
+          <li><a href="catalogo.html?marca=chronic" data-marca="chronic">Chronic</a></li>
+          <li><a href="catalogo.html?marca=tripside" data-marca="tripside">Tripside</a></li>
+        </ul>
       </div>
-      <div class="col">
-        <h6 class="fw-bold">Coleção</h6>
-        <p>Blunt Summer<br>Seven Sins<br>Chronic Setembro<br>Vans Fall</p>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Coleção
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?colecao=blunt-summer" data-colecao="blunt-summer">Blunt Summer</a></li>
+          <li><a href="catalogo.html?colecao=seven-sins" data-colecao="seven-sins">Seven Sins</a></li>
+          <li><a href="catalogo.html?colecao=chronic-setembro" data-colecao="chronic-setembro">Chronic Setembro</a></li>
+          <li><a href="catalogo.html?colecao=vans-fall" data-colecao="vans-fall">Vans Fall</a></li>
+        </ul>
       </div>
     </div>
   </div>
-   -->
 
-  <!-- BANNERS -->
+ 
+
+  <div class="overlay" id="cart-overlay"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h4>Minha Sacola</h4>
+      <button class="cart-modal-close" id="cart-modal-close">&times;</button>
+    </div>
+    <div class="cart-modal-items" id="cart-modal-items">
+    </div>
+    <div class="cart-modal-footer">
+      <div class="cart-modal-total">
+        <span>Total:</span>
+        <span id="cart-modal-total-value">R$ 0,00</span>
+      </div>
+      <div class="cart-modal-buttons">
+        <button class="cart-modal-checkout" id="cart-modal-checkout">Finalizar Compra</button>
+        <button class="cart-modal-continue" id="cart-modal-continue">Continuar Comprando</button>
+      </div>
+    </div>
+  </div>
+
   <div id="mainBanner" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -67,24 +126,23 @@
     </button>
   </div>
 
-  <!-- Selos -->
   <div class="container my-5 text-center">
     <div class="row justify-content-center g-4">
-      <div class="col-md-3 d-flex align-items-center gap-3">
+      <div class="col-md-3 d-flex align-items-center justify-content-center gap-3">
         <span class="iconify fs-1" data-icon="mdi:truck"></span>
         <div>
           <div class="fw-bold fs-5">Entrega garantida</div>
           <div class="fs-6">Entrega garantida para todo o Brasil</div>
         </div>
       </div>
-      <div class="col-md-3 d-flex align-items-center gap-3">
+      <div class="col-md-3 d-flex align-items-center justify-content-center gap-3">
         <span class="iconify fs-1" data-icon="mdi:medal"></span>
         <div>
           <div class="fw-bold fs-5">Qualidade e Confiabilidade</div>
           <div class="fs-6">Produtos originais e de alta Qualidade</div>
         </div>
       </div>
-      <div class="col-md-3 d-flex align-items-center gap-3">
+      <div class="col-md-3 d-flex align-items-center justify-content-center gap-3">
         <span class="iconify fs-1" data-icon="mdi:lock"></span>
         <div>
           <div class="fw-bold fs-5">Pagamento seguro</div>
@@ -94,128 +152,275 @@
     </div>
   </div>
 
-  <!-- CARDS de Categoria -->
   <div class="container my-5">
-    <div class="row justify-content-center g-4">
-      <div class="col-md-3 category-card">
-        <div class="position-relative overflow-hidden">
-          <img src="assets/images/img1.jpg" class="img-fluid category-img" alt="Camisetas">
-          <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">CAMISETAS</h5>
+    <div class="category-section">
+      <h2 class="mb-4">Categorias</h2>
+      <a href="catalogo.html" class="ver-catalogo">Ver catálogo completo</a>
+      <div class="row justify-content-center g-4">
+        <div class="col-md-3 category-card">
+          <div class="position-relative overflow-hidden">
+            <img src="assets/images/img1.jpg" class="img-fluid category-img" alt="Camisetas">
+            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">CAMISETAS</h5>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3 category-card">
-        <div class="position-relative overflow-hidden">
-          <img src="assets/images/img2.jpg" class="img-fluid category-img" alt="Moletons">
-          <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">MOLETONS</h5>
+        <div class="col-md-3 category-card">
+          <div class="position-relative overflow-hidden">
+            <img src="assets/images/img2.jpg" class="img-fluid category-img" alt="Moletons">
+            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">MOLETONS</h5>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3 category-card">
-        <div class="position-relative overflow-hidden">
-          <img src="assets/images/img3.jpg" class="img-fluid category-img" alt="Tênis">
-          <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">TÊNIS</h5>
+        <div class="col-md-3 category-card">
+          <div class="position-relative overflow-hidden">
+            <img src="assets/images/img3.jpg" class="img-fluid category-img" alt="Tênis">
+            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">TÊNIS</h5>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3 category-card">
-        <div class="position-relative overflow-hidden">
-          <img src="assets/images/img4.jpg" class="img-fluid category-img" alt="Bonés">
-          <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">BONÉS</h5>
+        <div class="col-md-3 category-card">
+          <div class="position-relative overflow-hidden">
+            <img src="assets/images/img4.jpg" class="img-fluid category-img" alt="Bonés">
+            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">BONÉS</h5>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Sobre nós -->
-<section class="text-white py-5" style="background-image: url('assets/images/backgroundGraffitti.png'); background-size: cover; background-position: center;">
-  <div class="container d-flex align-items-center" style="backdrop-filter: brightness(0.6);">
-    <div class="w-50">
-      <img src="assets/images/sobrenos.jpg" class="img-fluid" alt="Sobre nós" style="max-width: 75%; border-radius: 12px;">
-    </div>
-    <div class="w-50 ps-5">
-      <h2 class="fw-bold text-uppercase">Sobre Nós</h2>
+  <section class="text-white py-5" style="background-image: url('assets/images/backgroundGraffitti.png'); background-size: cover; background-position: center;">
+    <div class="container d-flex align-items-center" style="backdrop-filter: brightness(0.6);">
+      <div class="w-50">
+        <img src="assets/images/sobrenos.jpg" class="img-fluid" alt="Sobre nós" style="max-width: 75%; border-radius: 12px;">
+      </div>
+      <div class="w-50 ps-5">
+        <h2 class="fw-bold text-uppercase">Sobre Nós</h2>
         <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta viverra nulla sed malesuada. 
-        Aliquam mi lectus, tincidunt nec purus id, blandit sodales tortor. 
-        Vestibulum lacinia ac nisl ut vestibulum. Sed luctus pretium elit id cursus. 
-        Phasellus vulputate sed velit id scelerisque. Sed neque nulla, vestibulum sed libero ut, 
-        imperdiet volutpat tellus. Quisque vulputate, massa porttitor maximus malesuada, diam felis 
-        malesuada odio, nec feugiat libero nisi quis ipsum. In iaculis erat et pretium finibus. 
-        Nulla pharetra tincidunt magna, non vehicula neque eleifend quis. Nam in ligula ex. 
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta viverra nulla sed malesuada.
+          Aliquam mi lectus, tincidunt nec purus id, blandit sodales tortor.
+          Vestibulum lacinia ac nisl ut vestibulum. Sed luctus pretium elit id cursus.
+          Phasellus vulputate sed velit id scelerisque. Sed neque nulla, vestibulum sed libero ut,
+          imperdiet volutpat tellus. Quisque vulputate, massa porttitor maximus malesuada, diam felis
+          malesuada odio, nec feugiat libero nisi quis ipsum. In iaculis erat et pretium finibus.
+          Nulla pharetra tincidunt magna, non vehicula neque eleifend quis. Nam in ligula ex.
         </p>
-      <button class="btn btn-light text-black fw-bold">Saiba mais</button>
-    </div>
-  </div>
-</section>
-
-<script src="dados.js"></script>
-
-<section class="carrossel-container">
-  <h2 class="categoria">Lançamentos</h2>
-
-  <div class="cards-wrapper" id="produtos-container">
-  </div>
-
-  <!-- MODELO BASICO PARA CASO DÊ ERRADO ESSA PARADA
-   
-  <div class="cards-wrapper">
-    <div class="card">
-    <a href="produto.html">
-      <img src="assets/images/img1.jpg" alt="Produto 1">
-      <div class="info">
-        <h3 class="nome">Camiseta Volcom Stone - Branca</h3>
-        <p class="preco">R$ 197,99</p>
+        <button class="btn btn-light text-black fw-bold">Saiba mais</button>
       </div>
-    </a>
-  </div>
-  -->
-   
-  </div>
-</section>
+    </div>
+  </section>
 
+  <section class="carrossel-container">
+    <h2 class="categoria">Lançamentos</h2>
 
-  <!-- Footer -->
+    <div class="cards-wrapper" id="produtos-container">
+    </div>
+  </section>
+
   <footer class="footer-container">
-        <div class="footer">
-            <div class="footer-section">
-                <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
-            </div>
+    <div class="footer">
+      <div class="footer-section">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+      </div>
 
-            <div class="footer-section">
-                <h2>Institucional</h2>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Como comprar</a></li>
-                    <li><a href="#">Envio</a></li>
-                    <li><a href="#">Segurança</a></li>
-                    <li><a href="#">Pagamento</a></li>
-                    <li><a href="#">Fale conosco</a></li>
-                    <li><a href="#">Sobre Nós</a></li>
-                </ul>
-            </div>
+      <div class="footer-section">
+        <h2>Institucional</h2>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Como comprar</a></li>
+          <li><a href="#">Envio</a></li>
+          <li><a href="#">Segurança</a></li>
+          <li><a href="#">Pagamento</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-section">
-                <h2>Contato</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
-                </ul>
-            </div>
+      <div class="footer-section">
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-section">
-                <h2>Pagamento</h2>
-                <ul>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
-                </ul>
-            </div>
-        </div>
+      <div class="footer-section">
+        <h2>Pagamento</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="footer-bottom">
-            <hr />
-            <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
-        </div>
-    </footer>
+    <div class="footer-bottom">
+      <hr />
+      <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dados.js"></script>
   <script src="script.js"></script>
-  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartToggle = document.getElementById("cart-toggle");
+      const cartModal = document.getElementById("cart-modal");
+      const cartOverlay = document.getElementById("cart-overlay");
+      const cartModalClose = document.getElementById("cart-modal-close");
+      const cartModalContinue = document.getElementById("cart-modal-continue");
+      const cartModalCheckout = document.getElementById("cart-modal-checkout");
+      const cartModalItems = document.getElementById("cart-modal-items");
+      const cartModalTotalValue = document.getElementById("cart-modal-total-value");
+
+      const menuCategories = document.querySelectorAll('.menu-category-title');
+      menuCategories.forEach(category => {
+        category.addEventListener('click', function () {
+          const parent = this.parentElement;
+          parent.classList.toggle('active');
+        });
+      });
+
+      if (!cartToggle || !cartModal || !cartOverlay) {
+        console.error("Elementos do carrinho não encontrados");
+        return;
+      }
+
+      console.log("Inicializando carrinho modal...");
+
+      cartToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Botão do carrinho clicado");
+        openCartModal();
+      });
+
+      if (cartModalClose) {
+        cartModalClose.addEventListener("click", closeCartModal);
+      }
+
+      cartOverlay.addEventListener("click", closeCartModal);
+
+      if (cartModalContinue) {
+        cartModalContinue.addEventListener("click", closeCartModal);
+      }
+
+      if (cartModalCheckout) {
+        cartModalCheckout.addEventListener("click", () => {
+          window.location.href = "carrinho.html";
+        });
+      }
+
+      function openCartModal() {
+        console.log("Abrindo modal do carrinho");
+        updateCartModal();
+        cartModal.classList.add("active");
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden"; 
+      }
+
+      function closeCartModal() {
+        console.log("Fechando modal do carrinho");
+        cartModal.classList.remove("active");
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = ""; 
+      }
+
+      function updateCartModal() {
+        if (!cartModalItems || !cartModalTotalValue) {
+          console.error("Elementos do modal não encontrados");
+          return;
+        }
+
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        console.log("Carrinho:", carrinho);
+
+        cartModalItems.innerHTML = "";
+
+        if (carrinho.length === 0) {
+          cartModalItems.innerHTML = '<p class="text-center">Sua sacola está vazia.</p>';
+          cartModalTotalValue.textContent = "R$ 0,00";
+          return;
+        }
+
+        let subtotal = 0;
+
+        carrinho.forEach((item, index) => {
+          const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
+          const preco = Number.parseFloat(precoTexto);
+          const total = preco * item.quantidade;
+          subtotal += total;
+
+          const itemElement = document.createElement("div");
+          itemElement.className = "cart-modal-item";
+          itemElement.innerHTML = `
+            <img src="${item.imagem}" alt="${item.nome}">
+            <div class="cart-modal-item-info">
+              <h5 class="cart-modal-item-name">${item.nome}</h5>
+              <p class="cart-modal-item-price">${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
+            }</p>
+              <div class="cart-modal-item-quantity">
+                <button class="decrease-quantity" data-index="${index}">-</button>
+                <span>${item.quantidade}</span>
+                <button class="increase-quantity" data-index="${index}">+</button>
+                <button class="cart-modal-item-remove" data-index="${index}">
+                  <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+                </button>
+              </div>
+            </div>
+          `;
+
+          cartModalItems.appendChild(itemElement);
+        });
+
+        cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
+
+        document.querySelectorAll(".decrease-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            decreaseQuantity(index);
+          });
+        });
+
+        document.querySelectorAll(".increase-quantity").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            increaseQuantity(index);
+          });
+        });
+
+        document.querySelectorAll(".cart-modal-item-remove").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const index = this.getAttribute("data-index");
+            removeFromCart(index);
+          });
+        });
+      }
+
+      function decreaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        if (carrinho[index].quantidade > 1) {
+          carrinho[index].quantidade--;
+          localStorage.setItem("carrinho", JSON.stringify(carrinho));
+          updateCartModal();
+        }
+      }
+
+      function increaseQuantity(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho[index].quantidade++;
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      function removeFromCart(index) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho.splice(index, 1);
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        updateCartModal();
+      }
+
+      window.cartFunctions = {
+        openCartModal,
+        closeCartModal,
+        updateCartModal
+      };
+    });
+  </script>
 </body>
+
 </html>
