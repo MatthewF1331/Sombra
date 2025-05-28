@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sacola - Sombra Streetwear</title>
-  <link rel="stylesheet" href="https: cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-  <script src="https: code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
 
 <body>
@@ -79,6 +79,7 @@
       <button class="cart-modal-close" id="cart-modal-close">&times;</button>
     </div>
     <div class="cart-modal-items" id="cart-modal-items">
+      <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
     </div>
     <div class="cart-modal-footer">
       <div class="cart-modal-total">
@@ -110,8 +111,10 @@
           </div>
         </div>
 
+        <!-- Os produtos serão inseridos aqui via JavaScript -->
       </div>
 
+      <!-- Resumo da Compra -->
       <div class="resumo-compra">
         <h4>RESUMO DA COMPRA</h4>
         <div class="resumo-item">
@@ -135,6 +138,7 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="footer-container">
     <div class="footer">
       <div class="footer-section">
@@ -176,10 +180,12 @@
     </div>
   </footer>
 
-  <script src="https: cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
   <script>
+    // Script inline para garantir que o carrinho funcione
     document.addEventListener("DOMContentLoaded", () => {
+      // Elementos do DOM
       const cartToggle = document.getElementById("cart-toggle");
       const cartModal = document.getElementById("cart-modal");
       const cartOverlay = document.getElementById("cart-overlay");
@@ -189,6 +195,7 @@
       const cartModalItems = document.getElementById("cart-modal-items");
       const cartModalTotalValue = document.getElementById("cart-modal-total-value");
 
+      // Verificar se os elementos existem
       if (!cartToggle || !cartModal || !cartOverlay) {
         console.error("Elementos do carrinho não encontrados");
         return;
@@ -196,12 +203,14 @@
 
       console.log("Inicializando carrinho modal...");
 
+      // Abrir o modal do carrinho
       cartToggle.addEventListener("click", (e) => {
         e.preventDefault();
         console.log("Botão do carrinho clicado");
         openCartModal();
       });
 
+      // Fechar o modal do carrinho
       if (cartModalClose) {
         cartModalClose.addEventListener("click", closeCartModal);
       }
@@ -212,28 +221,31 @@
         cartModalContinue.addEventListener("click", closeCartModal);
       }
 
+      // Ir para o checkout
       if (cartModalCheckout) {
         cartModalCheckout.addEventListener("click", () => {
           window.location.href = "carrinho.html";
         });
       }
 
+      // Função para abrir o modal do carrinho
       function openCartModal() {
         console.log("Abrindo modal do carrinho");
         updateCartModal();
         cartModal.classList.add("active");
         cartOverlay.classList.add("active");
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden"; // Impedir rolagem da página
       }
 
+      // Função para fechar o modal do carrinho
       function closeCartModal() {
         console.log("Fechando modal do carrinho");
         cartModal.classList.remove("active");
         cartOverlay.classList.remove("active");
-        document.body.style.overflow = "";
+        document.body.style.overflow = ""; // Restaurar rolagem da página
       }
 
-
+      // Função para atualizar o conteúdo do modal do carrinho
       function updateCartModal() {
         if (!cartModalItems || !cartModalTotalValue) {
           console.error("Elementos do modal não encontrados");
@@ -254,6 +266,7 @@
         let subtotal = 0;
 
         carrinho.forEach((item, index) => {
+          // Converter o preço para número
           const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
           const preco = Number.parseFloat(precoTexto);
           const total = preco * item.quantidade;
@@ -281,8 +294,10 @@
           cartModalItems.appendChild(itemElement);
         });
 
+        // Atualizar o valor total
         cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
 
+        // Adicionar eventos aos botões de quantidade e remover
         document.querySelectorAll(".decrease-quantity").forEach((btn) => {
           btn.addEventListener("click", function () {
             const index = this.getAttribute("data-index");
@@ -305,6 +320,7 @@
         });
       }
 
+      // Função para diminuir a quantidade de um item
       function decreaseQuantity(index) {
         const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
         if (carrinho[index].quantidade > 1) {
@@ -314,6 +330,7 @@
         }
       }
 
+      // Função para aumentar a quantidade de um item
       function increaseQuantity(index) {
         const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
         carrinho[index].quantidade++;
@@ -321,6 +338,7 @@
         updateCartModal();
       }
 
+      // Função para remover um item do carrinho
       function removeFromCart(index) {
         const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
         carrinho.splice(index, 1);
@@ -328,21 +346,25 @@
         updateCartModal();
       }
 
+      // Expor funções globalmente para uso em outras páginas
       window.cartFunctions = {
         openCartModal,
         closeCartModal,
         updateCartModal
       };
 
+      // Carregar os produtos na página do carrinho
       carregarProdutosCarrinho();
     });
 
+    // Função para carregar os produtos na página do carrinho
     function carregarProdutosCarrinho() {
       const produtosContainer = document.getElementById("produtos-container");
       if (!produtosContainer) return;
 
       const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
+      // Manter apenas a legenda
       const legenda = produtosContainer.querySelector(".card-legenda");
       produtosContainer.innerHTML = "";
       if (legenda) produtosContainer.appendChild(legenda);
@@ -353,13 +375,16 @@
         mensagemVazia.innerHTML = "<p>Sua sacola está vazia.</p>";
         produtosContainer.appendChild(mensagemVazia);
 
+        // Atualizar o resumo da compra
         atualizarResumoCompra(0);
         return;
       }
 
       let subtotal = 0;
 
+      // Adicionar os produtos
       carrinho.forEach((item, index) => {
+        // Converter o preço para número
         const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
         const preco = Number.parseFloat(precoTexto);
         const total = preco * item.quantidade;
@@ -385,6 +410,7 @@
         produtosContainer.appendChild(cardProduto);
       });
 
+      // Adicionar eventos aos botões de quantidade e remover
       document.querySelectorAll(".quantidade-input").forEach((input) => {
         input.addEventListener("change", function () {
           const index = this.getAttribute("data-index");
@@ -406,9 +432,11 @@
         });
       });
 
+      // Atualizar o resumo da compra
       atualizarResumoCompra(subtotal);
     }
 
+    // Função para atualizar a quantidade de um produto
     function atualizarQuantidadeProduto(index, quantidade) {
       const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
       carrinho[index].quantidade = quantidade;
@@ -416,6 +444,7 @@
       carregarProdutosCarrinho();
     }
 
+    // Função para remover um produto
     function removerProduto(index) {
       const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
       carrinho.splice(index, 1);
@@ -423,14 +452,16 @@
       carregarProdutosCarrinho();
     }
 
+    // Função para atualizar o resumo da compra
     function atualizarResumoCompra(subtotal) {
-      const frete = subtotal > 0 ? 20 : 0;
+      const frete = subtotal > 0 ? 20 : 0; // Frete fixo de R$ 20,00 se houver produtos
       const total = subtotal + frete;
 
       document.getElementById("resumo-subtotal").textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
       document.getElementById("resumo-frete").textContent = `R$ ${frete.toFixed(2).replace(".", ",")}`;
       document.getElementById("resumo-total").textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
 
+      // Desabilitar o botão de avançar se o carrinho estiver vazio
       const btnAvancar = document.querySelector(".btn-avancar");
       if (btnAvancar) {
         if (subtotal === 0) {
