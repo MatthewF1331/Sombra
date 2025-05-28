@@ -11,44 +11,35 @@ body {
   font-family: "Bahnschrift", sans-serif;
 }
 
-/* Logo */
-.navbar {
+/* NAVBAR */
+/* NAVBAR */
+.navbar .container-fluid {
+  position: relative; 
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  padding: 10px 0;
+  justify-content: space-between; 
+  padding-left: 1rem; 
+  padding-right: 1rem; 
 }
 
-.navbar-brand {
+.navbar .container-fluid > a[href="index.html"] {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin: 0;
-  padding: 0;
+  z-index: 2; 
 }
 
-.navbar img {
-  width: auto;
-  max-width: 232px;
-  display: block;
+
+.navbar .container-fluid > .d-flex.align-items-center.gap-3 {
+  margin-right: auto; 
+  z-index: 1;
 }
 
-.navbar .navbar-toggler {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
+.navbar .container-fluid > a[id="cart-toggle"] {
+  margin-left: auto; 
+  z-index: 1;
 }
 
-.navbar .cart-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Solução para centralizar os ícones na barra de pesquisa */
 .search-container {
   position: relative;
   display: flex;
@@ -711,6 +702,7 @@ a {
   opacity: 1;
 }
 
+/* Animação para o menu */
 @keyframes slideIn {
   from {
     transform: translateX(-20px);
@@ -940,7 +932,7 @@ a {
 /* Melhorias de responsividade */
 @media (max-width: 992px) {
   .navbar .container-fluid {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 
   .search-input {
@@ -952,7 +944,8 @@ a {
   }
 
   .navbar img {
-    height: 30px !important;
+    height: 0px;
+  
   }
 
   .cards-wrapper {
@@ -1096,6 +1089,7 @@ section.text-white.py-5 .container .w-50:first-child img {
   }
 }
 
+/* Correções para o menu dropdown em dispositivos móveis */
 @media (max-width: 576px) {
   .cart-modal {
     width: 100%;
