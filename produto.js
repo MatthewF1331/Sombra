@@ -1,19 +1,19 @@
-
-const ProductManager = (function() {
-  
+const ProductManager = (function () {
   function init() {
-    if (window.location.pathname.includes("produto.html")) {
+    if (window.location.pathname.includes('produto.html')) {
       loadProductDetails();
     }
-    
-    if (window.location.pathname.includes("index.html") || window.location.pathname.endsWith('/')) {
+
+    if (
+      window.location.pathname.includes('index.html') ||
+      window.location.pathname.endsWith('/')
+    ) {
       loadFeaturedProducts();
     }
-    
+
     console.log('ProductManager inicializado');
   }
-  
- 
+
   function loadProductDetails() {
     const produtoJSON = localStorage.getItem('produtoSelecionado');
 
@@ -25,15 +25,13 @@ const ProductManager = (function() {
     const produto = JSON.parse(produtoJSON);
 
     updateProductUI(produto);
-    
+
     setupSizeButtons();
-    
+
     setupColorOptions();
-    
+
     setupAddToCartButton(produto);
   }
-  
-  
 
   function updateProductUI(produto) {
     const elements = {
@@ -42,17 +40,20 @@ const ProductManager = (function() {
       descricao: document.getElementById('descricao'),
       imagem: document.getElementById('imagem'),
       id: document.getElementById('id'),
-      detalhes: document.getElementById('detalhes')
+      detalhes: document.getElementById('detalhes'),
     };
-    
-   
+
     if (elements.nome) elements.nome.textContent = produto.nome;
     if (elements.preco) elements.preco.textContent = produto.preco;
     if (elements.descricao) elements.descricao.textContent = produto.descricao;
     if (elements.imagem) elements.imagem.src = produto.imagem;
     if (elements.id) elements.id.textContent = produto.id;
-    
-    if (elements.detalhes && produto.detalhes && Array.isArray(produto.detalhes)) {
+
+    if (
+      elements.detalhes &&
+      produto.detalhes &&
+      Array.isArray(produto.detalhes)
+    ) {
       elements.detalhes.innerHTML = '';
       produto.detalhes.forEach((detalhe) => {
         const li = document.createElement('li');
@@ -61,24 +62,22 @@ const ProductManager = (function() {
       });
     }
   }
-  
 
   function setupSizeButtons() {
     document.querySelectorAll('.tamanho-btn').forEach((btn) => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function () {
         document.querySelectorAll('.tamanho-btn').forEach((b) => {
           b.classList.remove('selecionado');
         });
-      
+
         this.classList.add('selecionado');
       });
     });
   }
-  
 
   function setupColorOptions() {
     document.querySelectorAll('.cor-opcao').forEach((opcao) => {
-      opcao.addEventListener('click', function() {
+      opcao.addEventListener('click', function () {
         // Remover a classe 'selecionada' de todas as opções
         document.querySelectorAll('.cor-opcao').forEach((o) => {
           o.classList.remove('selecionada');
@@ -87,19 +86,26 @@ const ProductManager = (function() {
       });
     });
   }
-  
-  
+
   function setupAddToCartButton(produto) {
     const btnAdicionar = document.querySelector('.btn-adicionar');
     if (btnAdicionar) {
       btnAdicionar.addEventListener('click', () => {
-        const quantidade = Number.parseInt(document.querySelector('.quantidade-input').value) || 1;
+        const quantidade =
+          Number.parseInt(document.querySelector('.quantidade-input').value) ||
+          1;
 
-        const tamanhoSelecionado = document.querySelector('.tamanho-btn.selecionado');
-        const tamanho = tamanhoSelecionado ? tamanhoSelecionado.textContent : null;
+        const tamanhoSelecionado = document.querySelector(
+          '.tamanho-btn.selecionado',
+        );
+        const tamanho = tamanhoSelecionado
+          ? tamanhoSelecionado.textContent
+          : null;
 
         const corSelecionada = document.querySelector('.cor-opcao.selecionada');
-        const cor = corSelecionada ? corSelecionada.getAttribute('data-cor') : null;
+        const cor = corSelecionada
+          ? corSelecionada.getAttribute('data-cor')
+          : null;
 
         if (typeof CartManager !== 'undefined' && CartManager.addToCart) {
           CartManager.addToCart(produto, quantidade, tamanho, cor);
@@ -114,7 +120,8 @@ const ProductManager = (function() {
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
     const produtoExistente = carrinho.find(
-      (item) => item.id === produto.id && item.tamanho === tamanho && item.cor === cor,
+      (item) =>
+        item.id === produto.id && item.tamanho === tamanho && item.cor === cor,
     );
 
     if (produtoExistente) {
@@ -140,36 +147,34 @@ const ProductManager = (function() {
       alert('Produto adicionado à sacola!');
     }
   }
-  
 
   function loadFeaturedProducts() {
-    const container = document.getElementById("produtos-container");
+    const container = document.getElementById('produtos-container');
     if (!container) return;
-    
+
     if (typeof produtos !== 'undefined' && Array.isArray(produtos)) {
       renderProducts(produtos, container);
     } else {
-      fetch("produtos.json")
-        .then(response => response.json())
-        .then(data => {
+      fetch('produtos.json')
+        .then((response) => response.json())
+        .then((data) => {
           const featuredProducts = data.slice(0, 4);
           renderProducts(featuredProducts, container);
         })
-        .catch(error => {
-          console.error("Erro ao carregar produtos:", error);
-          container.innerHTML = '<p class="text-center">Erro ao carregar produtos.</p>';
+        .catch((error) => {
+          console.error('Erro ao carregar produtos:', error);
+          container.innerHTML =
+            '<p class="text-center">Erro ao carregar produtos.</p>';
         });
     }
   }
-  
-
 
   function renderProducts(produtos, container) {
-    container.innerHTML = "";
+    container.innerHTML = '';
 
     produtos.forEach((produto) => {
-      const card = document.createElement("div");
-      card.classList.add("card");
+      const card = document.createElement('div');
+      card.classList.add('card');
 
       card.innerHTML = `
         <img src="${produto.imagem}" alt="${produto.nome}">
@@ -179,9 +184,9 @@ const ProductManager = (function() {
         </div>
       `;
 
-      card.addEventListener("click", () => {
-        localStorage.setItem("produtoSelecionado", JSON.stringify(produto));
-        window.location.href = "produto.html";
+      card.addEventListener('click', () => {
+        localStorage.setItem('produtoSelecionado', JSON.stringify(produto));
+        window.location.href = 'produto.html';
       });
 
       container.appendChild(card);
@@ -191,8 +196,8 @@ const ProductManager = (function() {
   return {
     init,
     loadProductDetails,
-    loadFeaturedProducts
+    loadFeaturedProducts,
   };
 })();
 
-document.addEventListener("DOMContentLoaded", ProductManager.init);
+document.addEventListener('DOMContentLoaded', ProductManager.init);
