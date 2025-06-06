@@ -1,74 +1,113 @@
 const produtos = [
   {
-    id: "N3XZQWPY1",
-    nome: "Camiseta Thrasher Fire - Preta",
-    preco: "R$ 199,90",
-    imagem: "assets/images/img1.jpg",
+    id: 'N3XZQWPY1',
+    nome: 'Camiseta Thrasher Fire - Preta',
+    preco: 'R$ 199,90',
+    imagem: 'assets/images/img1.jpg',
     descricao:
-      "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
-    categoria: "camiseta",
-    marca: "thrasher",
-    detalhes: ["Composição: 100% algodão", "Modelagem regular", "Manga curta"],
+      'Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.',
+    categoria: 'camiseta',
+    marca: 'thrasher',
+    detalhes: ['Composição: 100% algodão', 'Modelagem regular', 'Manga curta'],
   },
   {
-    id: "N3XZQWPY2",
-    nome: "Camiseta Chronic - Preta",
-    preco: "R$ 199,90",
-    imagem: "assets/images/img2.jpg",
+    id: 'N3XZQWPY2',
+    nome: 'Camiseta Chronic - Preta',
+    preco: 'R$ 199,90',
+    imagem: 'assets/images/img2.jpg',
     descricao:
-      "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
-    categoria: "camiseta",
-    marca: "chronic",
-    detalhes: ["Composição: 100% algodão", "Modelagem regular", "Manga curta"],
+      'Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.',
+    categoria: 'camiseta',
+    marca: 'chronic',
+    detalhes: ['Composição: 100% algodão', 'Modelagem regular', 'Manga curta'],
   },
   {
-    id: "N3XZQWPY3",
-    nome: "Camiseta Volcom - Preta",
-    preco: "R$ 199,90",
-    imagem: "assets/images/img3.jpg",
+    id: 'N3XZQWPY3',
+    nome: 'Camiseta Volcom - Preta',
+    preco: 'R$ 199,90',
+    imagem: 'assets/images/img3.jpg',
     descricao:
-      "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
-    categoria: "camiseta",
-    marca: "volcom",
-    detalhes: ["Composição: 100% algodão", "Modelagem regular", "Manga curta"],
+      'Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.',
+    categoria: 'camiseta',
+    marca: 'volcom',
+    detalhes: ['Composição: 100% algodão', 'Modelagem regular', 'Manga curta'],
   },
   {
-    id: "N3XZQWPY4",
-    nome: "Boné Thrasher - Preto",
-    preco: "R$ 159,90",
-    imagem: "assets/images/img4.jpg",
+    id: 'N3XZQWPY4',
+    nome: 'Boné Thrasher - Preto',
+    preco: 'R$ 159,90',
+    imagem: 'assets/images/img4.jpg',
     descricao:
-      "Boné confeccionado em material de alta qualidade com ajuste snapback. Bordado frontal e acabamento premium.",
-    categoria: "bone",
-    marca: "thrasher",
-    detalhes: ["Composição: 100% algodão", "Ajuste snapback", "Bordado frontal"],
+      'Boné confeccionado em material de alta qualidade com ajuste snapback. Bordado frontal e acabamento premium.',
+    categoria: 'bone',
+    marca: 'thrasher',
+    detalhes: [
+      'Composição: 100% algodão',
+      'Ajuste snapback',
+      'Bordado frontal',
+    ],
   },
-]
+  {
+    id: 'N3XZQWPY5',
+    nome: 'Moletom Vans - Preto',
+    preco: 'R$ 299,90',
+    imagem: 'assets/images/img1.jpg',
+    descricao:
+      'Moletom confeccionado em algodão e poliéster de alta qualidade. Confortável e durável, perfeito para os dias mais frios.',
+    categoria: 'moletom',
+    marca: 'vans',
+    detalhes: [
+      'Composição: 80% algodão, 20% poliéster',
+      'Modelagem regular',
+      'Bolso canguru',
+    ],
+  },
+  {
+    id: 'N3XZQWPY6',
+    nome: 'Calça Cargo Volcom - Preta',
+    preco: 'R$ 359,90',
+    imagem: 'assets/images/img2.jpg',
+    descricao:
+      'Calça cargo confeccionada em sarja resistente. Múltiplos bolsos e design moderno para o dia a dia.',
+    categoria: 'calca',
+    marca: 'volcom',
+    detalhes: [
+      'Composição: 100% algodão',
+      'Modelagem regular',
+      'Múltiplos bolsos',
+    ],
+  },
+  {
+    id: 'N3XZQWPY7',
+    nome: 'Tênis Vans Old Skool - Preto',
+    preco: 'R$ 399,90',
+    imagem: 'assets/images/img3.jpg',
+    descricao:
+      'O clássico tênis Vans Old Skool em couro e lona. Confortável e durável, combina com qualquer look.',
+    categoria: 'tenis',
+    marca: 'vans',
+    detalhes: [
+      'Composição: Couro e lona',
+      'Solado de borracha',
+      'Cadarço tradicional',
+    ],
+  },
+  {
+    id: 'N3XZQWPY8',
+    nome: 'Mochila Vans - Preta',
+    preco: 'R$ 259,90',
+    imagem: 'assets/images/img4.jpg',
+    descricao:
+      'Mochila resistente e espaçosa, perfeita para o dia a dia. Compartimentos organizados e alças acolchoadas.',
+    categoria: 'bag',
+    marca: 'vans',
+    detalhes: [
+      'Composição: Poliéster',
+      'Capacidade: 22L',
+      'Compartimento para notebook',
+    ],
+  },
+];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("produtos-container")
-
-  if (container) {
-    container.innerHTML = ""
-
-    produtos.forEach((produto) => {
-      const card = document.createElement("div")
-      card.classList.add("card")
-
-      card.innerHTML = `
-        <img src="${produto.imagem}" alt="${produto.nome}">
-        <div class="info">
-          <h3 class="nome">${produto.nome}</h3>
-          <p class="preco">${produto.preco}</p>
-        </div>
-      `
-
-      card.addEventListener("click", () => {
-        localStorage.setItem("produtoSelecionado", JSON.stringify(produto))
-        window.location.href = "produto.html"
-      })
-
-      container.appendChild(card)
-    })
-  }
-})
+// Expor produtos globalmente
+window.produtos = produtos;
