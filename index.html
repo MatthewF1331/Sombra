@@ -8,6 +8,24 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <style>
+    .logo-responsive {
+      display: block !important;
+      height: 40px !important;
+    }
+
+    @media (max-width: 992px) {
+      .logo-responsive {
+        height: 35px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-responsive {
+        height: 30px !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -18,7 +36,7 @@
         <a href="#" id="menu-toggle">
           <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
         </a>
-        <div class="search-container">
+        <div class="search-container d-none d-md-block">
           <form id="search-form" class="d-flex">
             <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
             <button type="submit" class="search-button">
@@ -26,15 +44,31 @@
             </button>
           </form>
         </div>
+        <button class="mobile-search-btn d-md-none" id="mobile-search-btn">
+          <span class="iconify" data-icon="mdi:magnify"></span>
+        </button>
       </div>
-      <a href="index.html">
-        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40" class="logo-responsive">
       </a>
       <a href="#" id="cart-toggle">
         <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
       </a>
     </div>
   </nav>
+
+  <!-- Modal de Pesquisa Mobile -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-content">
+      <button class="search-modal-close" id="search-modal-close">&times;</button>
+      <h4 style="margin-bottom: 15px;">Buscar Produtos</h4>
+      <form id="mobile-search-form">
+        <input type="text" id="mobile-search-input" class="search-modal-input" placeholder="Digite o que você procura...">
+        <button type="submit" class="search-modal-btn">Buscar</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Menu Dropdown Lateral -->
   <div class="menu-overlay" id="menu-overlay"></div>
   <div id="menu-dropdown">
@@ -87,8 +121,7 @@
     </div>
   </div>
 
- 
-
+  <!-- Modal do Carrinho -->
   <div class="overlay" id="cart-overlay"></div>
   <div class="cart-modal" id="cart-modal">
     <div class="cart-modal-header">
@@ -109,6 +142,7 @@
     </div>
   </div>
 
+  <!-- Banner Principal -->
   <div id="mainBanner" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -126,23 +160,24 @@
     </button>
   </div>
 
+  <!-- Selos de Garantia -->
   <div class="container my-5 text-center">
     <div class="row justify-content-center g-4">
-      <div class="col-md-3 d-flex align-items-center justify-content-center gap-3">
+      <div class="col-md-4 d-flex align-items-center justify-content-center gap-3">
         <span class="iconify fs-1" data-icon="mdi:truck"></span>
         <div>
           <div class="fw-bold fs-5">Entrega garantida</div>
           <div class="fs-6">Entrega garantida para todo o Brasil</div>
         </div>
       </div>
-      <div class="col-md-3 d-flex align-items-center justify-content-center gap-3">
+      <div class="col-md-4 d-flex align-items-center justify-content-center gap-3">
         <span class="iconify fs-1" data-icon="mdi:medal"></span>
         <div>
           <div class="fw-bold fs-5">Qualidade e Confiabilidade</div>
           <div class="fs-6">Produtos originais e de alta Qualidade</div>
         </div>
       </div>
-      <div class="col-md-3 d-flex align-items-center justify-content-center gap-3">
+      <div class="col-md-4 d-flex align-items-center justify-content-center gap-3">
         <span class="iconify fs-1" data-icon="mdi:lock"></span>
         <div>
           <div class="fw-bold fs-5">Pagamento seguro</div>
@@ -152,43 +187,45 @@
     </div>
   </div>
 
+  <!-- Categorias -->
   <div class="container my-5">
     <div class="category-section">
       <h2 class="mb-4">Categorias</h2>
       <a href="catalogo.html" class="ver-catalogo">Ver catálogo completo</a>
       <div class="row justify-content-center g-4">
-        <div class="col-md-3 category-card">
+        <div class="col-md-3 col-sm-6 category-card">
           <div class="position-relative overflow-hidden">
             <img src="assets/images/img1.jpg" class="img-fluid category-img" alt="Camisetas">
-            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">CAMISETAS</h5>
+            <h5 class="position-absolute text-white fw-bold category-title">CAMISETAS</h5>
           </div>
         </div>
-        <div class="col-md-3 category-card">
+        <div class="col-md-3 col-sm-6 category-card">
           <div class="position-relative overflow-hidden">
             <img src="assets/images/img2.jpg" class="img-fluid category-img" alt="Moletons">
-            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">MOLETONS</h5>
+            <h5 class="position-absolute text-white fw-bold category-title">MOLETONS</h5>
           </div>
         </div>
-        <div class="col-md-3 category-card">
+        <div class="col-md-3 col-sm-6 category-card">
           <div class="position-relative overflow-hidden">
             <img src="assets/images/img3.jpg" class="img-fluid category-img" alt="Tênis">
-            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">TÊNIS</h5>
+            <h5 class="position-absolute text-white fw-bold category-title">TÊNIS</h5>
           </div>
         </div>
-        <div class="col-md-3 category-card">
+        <div class="col-md-3 col-sm-6 category-card">
           <div class="position-relative overflow-hidden">
             <img src="assets/images/img4.jpg" class="img-fluid category-img" alt="Bonés">
-            <h5 class="position-absolute text-white fw-bold" style="left: 10px; top: 50%; transform: translateY(-50%)">BONÉS</h5>
+            <h5 class="position-absolute text-white fw-bold category-title">BONÉS</h5>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <section class="text-white py-5" style="background-image: url('assets/images/backgroundGraffitti.png'); background-size: cover; background-position: center;">
+  <!-- Sobre Nós -->
+  <section class="text-white py-5 d-none d-md-block" style="background-image: url('assets/images/backgroundGraffitti.png'); background-size: cover; background-position: center;">
     <div class="container d-flex align-items-center" style="backdrop-filter: brightness(0.6);">
       <div class="w-50">
-        <img src="assets/images/sobrenos.jpg" class="img-fluid" alt="Sobre nós" style="max-width: 75%; border-radius: 12px;">
+        <img src="assets/images/sobrenos.jpg" class="img-fluid sobre-nos-img" alt="Sobre nós">
       </div>
       <div class="w-50 ps-5">
         <h2 class="fw-bold text-uppercase">Sobre Nós</h2>
@@ -196,29 +233,26 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porta viverra nulla sed malesuada.
           Aliquam mi lectus, tincidunt nec purus id, blandit sodales tortor.
           Vestibulum lacinia ac nisl ut vestibulum. Sed luctus pretium elit id cursus.
-          Phasellus vulputate sed velit id scelerisque. Sed neque nulla, vestibulum sed libero ut,
-          imperdiet volutpat tellus. Quisque vulputate, massa porttitor maximus malesuada, diam felis
-          malesuada odio, nec feugiat libero nisi quis ipsum. In iaculis erat et pretium finibus.
-          Nulla pharetra tincidunt magna, non vehicula neque eleifend quis. Nam in ligula ex.
+          Phasellus vulputate sed velit id scelerisque.
         </p>
         <button class="btn btn-light text-black fw-bold">Saiba mais</button>
       </div>
     </div>
   </section>
 
+  <!-- Lançamentos -->
   <section class="carrossel-container">
     <h2 class="categoria">Lançamentos</h2>
-
     <div class="cards-wrapper" id="produtos-container">
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer-container">
     <div class="footer">
       <div class="footer-section">
-        <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" class="footer-logo">
       </div>
-
       <div class="footer-section">
         <h2>Institucional</h2>
         <ul>
@@ -231,7 +265,6 @@
           <li><a href="#">Sobre Nós</a></li>
         </ul>
       </div>
-
       <div class="footer-section">
         <h2>Contato</h2>
         <ul>
@@ -239,7 +272,6 @@
           <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
         </ul>
       </div>
-
       <div class="footer-section">
         <h2>Pagamento</h2>
         <ul>
@@ -247,7 +279,6 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <hr />
       <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
@@ -257,170 +288,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="dados.js"></script>
   <script src="script.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const cartToggle = document.getElementById("cart-toggle");
-      const cartModal = document.getElementById("cart-modal");
-      const cartOverlay = document.getElementById("cart-overlay");
-      const cartModalClose = document.getElementById("cart-modal-close");
-      const cartModalContinue = document.getElementById("cart-modal-continue");
-      const cartModalCheckout = document.getElementById("cart-modal-checkout");
-      const cartModalItems = document.getElementById("cart-modal-items");
-      const cartModalTotalValue = document.getElementById("cart-modal-total-value");
-
-      const menuCategories = document.querySelectorAll('.menu-category-title');
-      menuCategories.forEach(category => {
-        category.addEventListener('click', function () {
-          const parent = this.parentElement;
-          parent.classList.toggle('active');
-        });
-      });
-
-      if (!cartToggle || !cartModal || !cartOverlay) {
-        console.error("Elementos do carrinho não encontrados");
-        return;
-      }
-
-      console.log("Inicializando carrinho modal...");
-
-      cartToggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        console.log("Botão do carrinho clicado");
-        openCartModal();
-      });
-
-      if (cartModalClose) {
-        cartModalClose.addEventListener("click", closeCartModal);
-      }
-
-      cartOverlay.addEventListener("click", closeCartModal);
-
-      if (cartModalContinue) {
-        cartModalContinue.addEventListener("click", closeCartModal);
-      }
-
-      if (cartModalCheckout) {
-        cartModalCheckout.addEventListener("click", () => {
-          window.location.href = "carrinho.html";
-        });
-      }
-
-      function openCartModal() {
-        console.log("Abrindo modal do carrinho");
-        updateCartModal();
-        cartModal.classList.add("active");
-        cartOverlay.classList.add("active");
-        document.body.style.overflow = "hidden"; 
-      }
-
-      function closeCartModal() {
-        console.log("Fechando modal do carrinho");
-        cartModal.classList.remove("active");
-        cartOverlay.classList.remove("active");
-        document.body.style.overflow = ""; 
-      }
-
-      function updateCartModal() {
-        if (!cartModalItems || !cartModalTotalValue) {
-          console.error("Elementos do modal não encontrados");
-          return;
-        }
-
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        console.log("Carrinho:", carrinho);
-
-        cartModalItems.innerHTML = "";
-
-        if (carrinho.length === 0) {
-          cartModalItems.innerHTML = '<p class="text-center">Sua sacola está vazia.</p>';
-          cartModalTotalValue.textContent = "R$ 0,00";
-          return;
-        }
-
-        let subtotal = 0;
-
-        carrinho.forEach((item, index) => {
-          const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
-          const preco = Number.parseFloat(precoTexto);
-          const total = preco * item.quantidade;
-          subtotal += total;
-
-          const itemElement = document.createElement("div");
-          itemElement.className = "cart-modal-item";
-          itemElement.innerHTML = `
-            <img src="${item.imagem}" alt="${item.nome}">
-            <div class="cart-modal-item-info">
-              <h5 class="cart-modal-item-name">${item.nome}</h5>
-              <p class="cart-modal-item-price">${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
-            }</p>
-              <div class="cart-modal-item-quantity">
-                <button class="decrease-quantity" data-index="${index}">-</button>
-                <span>${item.quantidade}</span>
-                <button class="increase-quantity" data-index="${index}">+</button>
-                <button class="cart-modal-item-remove" data-index="${index}">
-                  <span class="iconify" data-icon="mdi:trash-can-outline"></span>
-                </button>
-              </div>
-            </div>
-          `;
-
-          cartModalItems.appendChild(itemElement);
-        });
-
-        cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
-
-        document.querySelectorAll(".decrease-quantity").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const index = this.getAttribute("data-index");
-            decreaseQuantity(index);
-          });
-        });
-
-        document.querySelectorAll(".increase-quantity").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const index = this.getAttribute("data-index");
-            increaseQuantity(index);
-          });
-        });
-
-        document.querySelectorAll(".cart-modal-item-remove").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const index = this.getAttribute("data-index");
-            removeFromCart(index);
-          });
-        });
-      }
-
-      function decreaseQuantity(index) {
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        if (carrinho[index].quantidade > 1) {
-          carrinho[index].quantidade--;
-          localStorage.setItem("carrinho", JSON.stringify(carrinho));
-          updateCartModal();
-        }
-      }
-
-      function increaseQuantity(index) {
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        carrinho[index].quantidade++;
-        localStorage.setItem("carrinho", JSON.stringify(carrinho));
-        updateCartModal();
-      }
-
-      function removeFromCart(index) {
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        carrinho.splice(index, 1);
-        localStorage.setItem("carrinho", JSON.stringify(carrinho));
-        updateCartModal();
-      }
-
-      window.cartFunctions = {
-        openCartModal,
-        closeCartModal,
-        updateCartModal
-      };
-    });
-  </script>
 </body>
 
 </html>
