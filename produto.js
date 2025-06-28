@@ -38,15 +38,15 @@ const ProductManager = (function () {
       nome: document.getElementById('nome'),
       preco: document.getElementById('preco'),
       descricao: document.getElementById('descricao'),
-      imagem: document.getElementById('imagem'),
+      imagem_principal: document.getElementById('imagem_principal'),
       id: document.getElementById('id'),
       detalhes: document.getElementById('detalhes'),
     };
 
     if (elements.nome) elements.nome.textContent = produto.nome;
-    if (elements.preco) elements.preco.textContent = produto.preco;
+    if (elements.preco) elements.preco.textContent = "R$ " + produto.preco;
     if (elements.descricao) elements.descricao.textContent = produto.descricao;
-    if (elements.imagem) elements.imagem.src = produto.imagem;
+    if (elements.imagem_principal) elements.imagem_principal.src = produto.imagem_principal;
     if (elements.id) elements.id.textContent = produto.id;
 
     if (
@@ -131,7 +131,7 @@ const ProductManager = (function () {
         id: produto.id,
         nome: produto.nome,
         preco: produto.preco,
-        imagem: produto.imagem,
+        imagem_principal: produto.imagem_principal,
         quantidade: quantidade,
         tamanho: tamanho,
         cor: cor,
@@ -177,10 +177,10 @@ const ProductManager = (function () {
       card.classList.add('card');
 
       card.innerHTML = `
-        <img src="${produto.imagem}" alt="${produto.nome}">
+        <img src="${produto.imagem_principal}" alt="${produto.nome}">
         <div class="info">
           <h3 class="nome">${produto.nome}</h3>
-          <p class="preco">${produto.preco}</p>
+          <p class="preco">R$ ${produto.preco}</p>
         </div>
       `;
 

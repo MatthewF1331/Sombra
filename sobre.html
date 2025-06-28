@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre a Sombra</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <style>
+    .logo-responsive {
+      display: block !important;
+      height: 40px !important;
+    }
+
+    @media (max-width: 992px) {
+      .logo-responsive {
+        height: 35px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-responsive {
+        height: 30px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top bg-black shadow-sm">
+    <div class="container-fluid justify-content-between px-4">
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" id="menu-toggle">
+          <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
+        </a>
+        <div class="search-container d-none d-md-block">
+          <form id="search-form" class="d-flex">
+            <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
+            <button type="submit" class="search-button">
+              <span class="iconify" data-icon="mdi:magnify"></span>
+            </button>
+          </form>
+        </div>
+        <button class="mobile-search-btn d-md-none" id="mobile-search-btn">
+          <span class="iconify" data-icon="mdi:magnify"></span>
+        </button>
+      </div>
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40" class="logo-responsive">
+      </a>
+      <a href="#" id="cart-toggle">
+        <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Modal de Pesquisa Mobile -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-content">
+      <button class="search-modal-close" id="search-modal-close">&times;</button>
+      <h4 style="margin-bottom: 15px;">Buscar Produtos</h4>
+      <form id="mobile-search-form">
+        <input type="text" id="mobile-search-input" class="search-modal-input" placeholder="Digite o que você procura...">
+        <button type="submit" class="search-modal-btn">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Menu Dropdown Lateral -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <div id="menu-dropdown">
+    <div class="menu-header">
+      <h4>Menu</h4>
+      <button class="menu-close" id="menu-close">&times;</button>
+    </div>
+    <div class="menu-categories">
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Categoria
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?categoria=camiseta" data-categoria="camiseta">Camiseta</a></li>
+          <li><a href="catalogo.html?categoria=moletom" data-categoria="moletom">Moletom</a></li>
+          <li><a href="catalogo.html?categoria=calca" data-categoria="calca">Calças</a></li>
+          <li><a href="catalogo.html?categoria=bag" data-categoria="bag">Bags</a></li>
+          <li><a href="catalogo.html?categoria=bone" data-categoria="bone">Bonés</a></li>
+          <li><a href="catalogo.html?categoria=tenis" data-categoria="tenis">Tênis</a></li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Marcas
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?marca=kenner" data-marca="kenner">Kenner</a></li>
+          <li><a href="catalogo.html?marca=norden" data-marca="norden">Norden</a></li>
+          <li><a href="catalogo.html?marca=vans" data-marca="vans">Vans</a></li>
+          <li><a href="catalogo.html?marca=volcom" data-marca="volcom">Volcom</a></li>
+          <li><a href="catalogo.html?marca=blunt" data-marca="blunt">Blunt</a></li>
+          <li><a href="catalogo.html?marca=chronic" data-marca="chronic">Chronic</a></li>
+          <li><a href="catalogo.html?marca=tripside" data-marca="tripside">Tripside</a></li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Coleção
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?colecao=blunt-summer" data-colecao="blunt-summer">Blunt Summer</a></li>
+          <li><a href="catalogo.html?colecao=seven-sins" data-colecao="seven-sins">Seven Sins</a></li>
+          <li><a href="catalogo.html?colecao=chronic-setembro" data-colecao="chronic-setembro">Chronic Setembro</a></li>
+          <li><a href="catalogo.html?colecao=vans-fall" data-colecao="vans-fall">Vans Fall</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal do Carrinho -->
+  <div class="overlay" id="cart-overlay"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h4>Minha Sacola</h4>
+      <button class="cart-modal-close" id="cart-modal-close">&times;</button>
+    </div>
+    <div class="cart-modal-items" id="cart-modal-items">
+    </div>
+    <div class="cart-modal-footer">
+      <div class="cart-modal-total">
+        <span>Total:</span>
+        <span id="cart-modal-total-value">R$ 0,00</span>
+      </div>
+      <div class="cart-modal-buttons">
+        <button class="cart-modal-checkout" id="cart-modal-checkout">Finalizar Compra</button>
+        <button class="cart-modal-continue" id="cart-modal-continue">Continuar Comprando</button>
+      </div>
+    </div>
+  </div>
+
+<!-- Sobre Nós -->
+ <section class="py-5" style="margin-top: 80px;">
+  <div class="container text-start mb-5">
+    <h1 class="fw-bold text-uppercase">Sobre Nós</h1>
+    <p class="mt-3" style="max-width: 800px;">
+      A Sombra Streetwear surgiu com um propósito claro: levar para as ruas roupas que representam atitude, liberdade e autenticidade. Somos mais do que uma marca de roupas, somos um reflexo da cultura urbana, do skate, da arte de rua e da expressão individual.
+      <br>
+      Desde o início, buscamos criar peças que não sejam apenas vestuário, mas que carreguem um significado. Cada estampa, cada corte e cada detalhe é pensado para traduzir o estilo de vida de quem não tem medo de ser diferente. Trabalhamos com materiais de qualidade, valorizando o conforto sem abrir mão do design.
+    </p>
+  </div>
+  <div class="container text-end mb-5">
+    <p class="mt-3 mx-auto" style="max-width: 800px;">
+      Nossa inspiração vem das ruas, dos grafites, da música, do skatepark e de todas as formas de arte que quebram padrões. Na Sombra, acreditamos que a moda é uma forma de expressão e queremos que cada cliente sinta isso em cada peça.
+
+      Estamos sempre em movimento, inovando, criando novas coleções e buscando representar todas as vozes que fazem parte dessa comunidade.
+    </p>
+  </div>
+</section>
+
+  <!-- Imagem Full Width (com altura controlada) -->
+  <div class="container-fluid px-0">
+    <img src="assets/images/banner2.png" alt="Imagem Sobre Nós" class="img-fluid w-100" style="max-height: 400px; object-fit: cover;">
+  </div>
+
+  <!-- Seção Nosso Time -->
+  <div class="container my-5">
+    <div class="row align-items-center g-4">
+      <div class="col-12 col-lg-6 d-flex justify-content-center">
+        <img src="assets/images/sobrenos.jpg" alt="Nosso Time" class="img-fluid rounded" style="max-height: 30rem; object-fit: cover;">
+      </div>
+      <div class="col-12 col-lg-6">
+        <h2 class="fw-bold text-uppercase mb-3 text-center text-lg-start">Nosso Time</h2>
+        <p class="text-center text-lg-start">
+          Por trás de cada peça, há um time apaixonado por moda, design e cultura de rua. Somos designers, vendedores, criadores de conteúdo e, acima de tudo, fãs do lifestyle que a Sombra representa. Nossa equipe trabalha todos os dias para entregar o melhor produto, com o melhor atendimento.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Imagem Centralizada (sem sombra) -->
+  <div class="container text-center mb-5">
+    <img src="assets/images/logo_preta.png" alt="Equipe Sombra" class="img-fluid" style="max-width: 300px; height: auto; margin-top: 2rem;">
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="footer-container">
+    <div class="footer">
+      <div class="footer-section">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" class="footer-logo">
+      </div>
+      <div class="footer-section">
+        <h2>Institucional</h2>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Como comprar</a></li>
+          <li><a href="#">Envio</a></li>
+          <li><a href="#">Segurança</a></li>
+          <li><a href="#">Pagamento</a></li>
+          <li><a href="#">Fale conosco</a></li>
+          <li><a href="login.php">Área Administrativa</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> (99) 9 9999-9999</a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h2>Pagamento</h2>
+        <ul>
+          <li><a href="#"><i class="fa fa-whatsapp"></i> Pagamento Combinado Via WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <hr />
+      <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dados.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -8,6 +8,262 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <style>
+    .logo-responsive {
+      display: block !important;
+      height: 40px !important;
+    }
+
+    @media (max-width: 992px) {
+      .logo-responsive {
+        height: 35px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-responsive {
+        height: 30px !important;
+      }
+    }
+
+    /* Estilos específicos para o carrinho */
+    .carrinho-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .desmarcar-todos {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .desmarcar-todos:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .produto-carrinho {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background: white;
+      position: relative;
+      min-height: 180px;
+    }
+
+    .produto-checkbox {
+      margin-top: 10px;
+    }
+
+    .produto-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .produto-imagem {
+      width: 120px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+    }
+
+    .produto-imagem.error {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .produto-imagem.error::before {
+      content: "Imagem não disponível";
+      font-size: 11px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .produto-detalhes {
+      flex-grow: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 150px;
+    }
+
+    .produto-nome {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      margin: 0 0 8px 0;
+      line-height: 1.3;
+    }
+
+    .produto-codigo {
+      font-size: 12px;
+      color: #666;
+      margin: 0 0 8px 0;
+    }
+
+    .produto-variacao {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 15px 0;
+    }
+
+    .produto-acoes {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .quantidade-controle {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .quantidade-btn {
+      background: #f8f9fa;
+      border: none;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .quantidade-btn:hover {
+      background: #e9ecef;
+      color: #000;
+    }
+
+    .quantidade-input {
+      border: none;
+      width: 50px;
+      height: 35px;
+      text-align: center;
+      font-size: 14px;
+      background: white;
+    }
+
+    .quantidade-input:focus {
+      outline: none;
+    }
+
+    .produto-preco-info {
+      text-align: right;
+      min-width: 120px;
+    }
+
+    .produto-preco {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      margin: 0;
+    }
+
+    .produto-preco-parcelado {
+      font-size: 12px;
+      color: #666;
+      margin: 5px 0 0 0;
+    }
+
+    .produto-acoes-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .produto-acoes-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .produto-acoes-links a:hover {
+      color: #000;
+    }
+
+    .btn-excluir {
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    .btn-excluir:hover {
+      color: #dc3545;
+    }
+
+    @media (max-width: 768px) {
+      .produto-carrinho {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .produto-imagem {
+        width: 100px;
+        height: 130px;
+        align-self: center;
+      }
+
+      .produto-detalhes {
+        width: 100%;
+      }
+
+      .produto-preco-info {
+        text-align: center;
+        min-width: auto;
+      }
+
+      .produto-acoes {
+        justify-content: center;
+      }
+
+      .produto-acoes-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .produto-carrinho {
+        padding: 15px;
+      }
+
+      .produto-imagem {
+        width: 80px;
+        height: 110px;
+      }
+
+      .quantidade-controle {
+        scale: 0.9;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -18,7 +274,7 @@
         <a href="#" id="menu-toggle">
           <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
         </a>
-        <div class="search-container">
+        <div class="search-container d-none d-md-block">
           <form id="search-form" class="d-flex">
             <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
             <button type="submit" class="search-button">
@@ -26,9 +282,12 @@
             </button>
           </form>
         </div>
+        <button class="mobile-search-btn d-md-none" id="mobile-search-btn">
+          <span class="iconify" data-icon="mdi:magnify"></span>
+        </button>
       </div>
-      <a href="index.html">
-        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40" class="logo-responsive">
       </a>
       <a href="#" id="cart-toggle">
         <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
@@ -36,37 +295,52 @@
     </div>
   </nav>
 
-  <!-- Menu Dropdown -->
-  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none; position: absolute; width: 100%; z-index: 1000;">
-    <div class="row">
-      <div class="col">
-        <h6 class="fw-bold">Categoria</h6>
-        <p><a href="#" data-categoria="camiseta">Camiseta</a><br>
-          <a href="#" data-categoria="moletom">Moletom</a><br>
-          <a href="#" data-categoria="calca">Calças</a><br>
-          <a href="#" data-categoria="bag">Bags</a><br>
-          <a href="#" data-categoria="bone">Bonés</a><br>
-          <a href="#" data-categoria="tenis">Tênis</a>
-        </p>
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-content">
+      <button class="search-modal-close" id="search-modal-close">&times;</button>
+      <h4 style="margin-bottom: 15px;">Buscar Produtos</h4>
+      <form id="mobile-search-form">
+        <input type="text" id="mobile-search-input" class="search-modal-input" placeholder="Digite o que você procura...">
+        <button type="submit" class="search-modal-btn">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <div id="menu-dropdown">
+    <div class="menu-header">
+      <h4>Menu</h4>
+      <button class="menu-close" id="menu-close">&times;</button>
+    </div>
+    <div class="menu-categories">
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Categoria
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?categoria=camiseta" data-categoria="camiseta">Camiseta</a></li>
+          <li><a href="catalogo.html?categoria=moletom" data-categoria="moletom">Moletom</a></li>
+          <li><a href="catalogo.html?categoria=calca" data-categoria="calca">Calças</a></li>
+          <li><a href="catalogo.html?categoria=bag" data-categoria="bag">Bags</a></li>
+          <li><a href="catalogo.html?categoria=bone" data-categoria="bone">Bonés</a></li>
+          <li><a href="catalogo.html?categoria=tenis" data-categoria="tenis">Tênis</a></li>
+        </ul>
       </div>
-      <div class="col">
-        <h6 class="fw-bold">Marcas</h6>
-        <p><a href="#" data-marca="kenner">Kenner</a><br>
-          <a href="#" data-marca="norden">Norden</a><br>
-          <a href="#" data-marca="vans">Vans</a><br>
-          <a href="#" data-marca="volcom">Volcom</a><br>
-          <a href="#" data-marca="blunt">Blunt</a><br>
-          <a href="#" data-marca="chronic">Chronic</a><br>
-          <a href="#" data-marca="tripside">Tripside</a>
-        </p>
-      </div>
-      <div class="col">
-        <h6 class="fw-bold">Coleção</h6>
-        <p><a href="#" data-colecao="blunt-summer">Blunt Summer</a><br>
-          <a href="#" data-colecao="seven-sins">Seven Sins</a><br>
-          <a href="#" data-colecao="chronic-setembro">Chronic Setembro</a><br>
-          <a href="#" data-colecao="vans-fall">Vans Fall</a>
-        </p>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Marcas
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?marca=kenner" data-marca="kenner">Kenner</a></li>
+          <li><a href="catalogo.html?marca=norden" data-marca="norden">Norden</a></li>
+          <li><a href="catalogo.html?marca=vans" data-marca="vans">Vans</a></li>
+          <li><a href="catalogo.html?marca=volcom" data-marca="volcom">Volcom</a></li>
+          <li><a href="catalogo.html?marca=blunt" data-marca="blunt">Blunt</a></li>
+          <li><a href="catalogo.html?marca=chronic" data-marca="chronic">Chronic</a></li>
+          <li><a href="catalogo.html?marca=tripside" data-marca="tripside">Tripside</a></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -93,32 +367,32 @@
     </div>
   </div>
 
-  <!-- Breadcrumb -->
   <div class="container" style="margin-top: 85px;">
     <p id="breadcrumb" style="font-weight: 300; font-size: 20px; color: #555;">Home > Sacola</p>
   </div>
 
   <div class="container mt-3 pt-3">
-    <h2 class="sacola-title mb-4">MINHA SACOLA</h2>
-    <div class="d-flex flex-wrap gap-4">
-      <!-- Resumo dos Produtos -->
-      <div id="produtos-container">
-        <div class="card-legenda d-flex justify-content-between align-items-center mb-2 px-3">
-          <span>PRODUTO</span>
-          <div class="d-flex gap-5">
-            <span>QUANTIDADE</span>
-            <span>TOTAL</span>
-          </div>
-        </div>
+    <div class="carrinho-header">
+      <h2 class="sacola-title mb-0">MINHA SACOLA</h2>
+      <div>
+        <a href="#" class="desmarcar-todos" id="desmarcar-todos">Desmarcar todos os itens</a>
+        <a href="#" class="desmarcar-todos ms-3" id="marcar-todos">Marcar todos os itens</a>
+      </div>
+    </div>
 
-        <!-- Os produtos serão inseridos aqui via JavaScript -->
+    <div class="d-flex flex-wrap gap-4">
+      <!-- Produtos -->
+      <div class="flex-grow-1" style="min-width: 300px;">
+        <div id="produtos-container">
+          <!-- Os produtos serão inseridos aqui via JavaScript -->
+        </div>
       </div>
 
       <!-- Resumo da Compra -->
       <div class="resumo-compra">
         <h4>RESUMO DA COMPRA</h4>
         <div class="resumo-item">
-          <span>Subtotal</span>
+          <span>Subtotal (<span id="itens-selecionados">0</span> produtos)</span>
           <span id="resumo-subtotal">R$ 0,00</span>
         </div>
         <div class="resumo-item">
@@ -129,10 +403,7 @@
           <span>TOTAL</span>
           <span id="resumo-total">R$ 0,00</span>
         </div>
-        <a href="checkout.html">
-          <button class="btn-avancar">Avançar para Checkout</button>
-        </a>
-
+        <button class="btn-avancar" id="btn-finalizar">Avançar para Checkout</button>
         <a href="index.html" class="link-comprar">Continuar comprando</a>
       </div>
     </div>
@@ -181,299 +452,475 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
   <script>
-    // Script inline para garantir que o carrinho funcione
-    document.addEventListener("DOMContentLoaded", () => {
-      // Elementos do DOM
+    document.addEventListener("DOMContentLoaded", function () {
+      // Inicializar o carrinho
+      initCart();
+
+      // Carregar produtos na página
+      loadCartItems();
+
+      // Adicionar evento ao botão de finalizar
+      document.getElementById("btn-finalizar").addEventListener("click", finalizarCompra);
+
+      // Adicionar eventos para marcar/desmarcar todos
+      document.getElementById("desmarcar-todos").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleAllItems(false);
+      });
+
+      document.getElementById("marcar-todos").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleAllItems(true);
+      });
+
+      // Inicializar menu lateral
+      initSideMenu();
+
+      // Inicializar modal de pesquisa
+      initSearchModal();
+    });
+
+    // Função para inicializar o carrinho
+    function initCart() {
       const cartToggle = document.getElementById("cart-toggle");
       const cartModal = document.getElementById("cart-modal");
       const cartOverlay = document.getElementById("cart-overlay");
       const cartModalClose = document.getElementById("cart-modal-close");
       const cartModalContinue = document.getElementById("cart-modal-continue");
       const cartModalCheckout = document.getElementById("cart-modal-checkout");
+
+      // Abrir modal do carrinho
+      cartToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        cartModal.classList.add("active");
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+        updateCartModal();
+      });
+
+      // Fechar modal do carrinho
+      cartModalClose.addEventListener("click", function () {
+        cartModal.classList.remove("active");
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      cartOverlay.addEventListener("click", function () {
+        cartModal.classList.remove("active");
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      cartModalContinue.addEventListener("click", function () {
+        cartModal.classList.remove("active");
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      // Ir para o checkout
+      cartModalCheckout.addEventListener("click", function () {
+        window.location.href = "carrinho.html";
+      });
+    }
+
+    // Função para inicializar o menu lateral
+    function initSideMenu() {
+      const menuToggle = document.getElementById("menu-toggle");
+      const menuDropdown = document.getElementById("menu-dropdown");
+      const menuOverlay = document.getElementById("menu-overlay");
+      const menuClose = document.getElementById("menu-close");
+
+      menuToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        menuDropdown.classList.add("active");
+        menuOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      menuClose.addEventListener("click", function () {
+        menuDropdown.classList.remove("active");
+        menuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      menuOverlay.addEventListener("click", function () {
+        menuDropdown.classList.remove("active");
+        menuOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      // Inicializar categorias do menu
+      const menuCategories = document.querySelectorAll(".menu-category-title");
+      menuCategories.forEach(function (category) {
+        category.addEventListener("click", function () {
+          const parent = this.parentElement;
+          parent.classList.toggle("active");
+        });
+      });
+    }
+
+    // Função para inicializar o modal de pesquisa
+    function initSearchModal() {
+      const mobileSearchBtn = document.getElementById("mobile-search-btn");
+      const searchModal = document.getElementById("search-modal");
+      const searchModalClose = document.getElementById("search-modal-close");
+
+      mobileSearchBtn.addEventListener("click", function () {
+        searchModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      searchModalClose.addEventListener("click", function () {
+        searchModal.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      // Formulário de pesquisa
+      const searchForm = document.getElementById("search-form");
+      const mobileSearchForm = document.getElementById("mobile-search-form");
+
+      searchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const searchTerm = document.getElementById("search-input").value.trim();
+        if (searchTerm) {
+          window.location.href = `catalogo.html?q=${encodeURIComponent(searchTerm)}`;
+        }
+      });
+
+      mobileSearchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const searchTerm = document.getElementById("mobile-search-input").value.trim();
+        if (searchTerm) {
+          searchModal.classList.remove("active");
+          document.body.style.overflow = "";
+          window.location.href = `catalogo.html?q=${encodeURIComponent(searchTerm)}`;
+        }
+      });
+    }
+
+    // Função para atualizar o modal do carrinho
+    function updateCartModal() {
       const cartModalItems = document.getElementById("cart-modal-items");
       const cartModalTotalValue = document.getElementById("cart-modal-total-value");
 
-      // Verificar se os elementos existem
-      if (!cartToggle || !cartModal || !cartOverlay) {
-        console.error("Elementos do carrinho não encontrados");
+      // Obter itens do carrinho
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      // Limpar conteúdo atual
+      cartModalItems.innerHTML = "";
+
+      if (cartItems.length === 0) {
+        cartModalItems.innerHTML = '<p class="text-center">Sua sacola está vazia.</p>';
+        cartModalTotalValue.textContent = "R$ 0,00";
         return;
       }
 
-      console.log("Inicializando carrinho modal...");
-
-      // Abrir o modal do carrinho
-      cartToggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        console.log("Botão do carrinho clicado");
-        openCartModal();
-      });
-
-      // Fechar o modal do carrinho
-      if (cartModalClose) {
-        cartModalClose.addEventListener("click", closeCartModal);
-      }
-
-      cartOverlay.addEventListener("click", closeCartModal);
-
-      if (cartModalContinue) {
-        cartModalContinue.addEventListener("click", closeCartModal);
-      }
-
-      // Ir para o checkout
-      if (cartModalCheckout) {
-        cartModalCheckout.addEventListener("click", () => {
-          window.location.href = "carrinho.html";
-        });
-      }
-
-      // Função para abrir o modal do carrinho
-      function openCartModal() {
-        console.log("Abrindo modal do carrinho");
-        updateCartModal();
-        cartModal.classList.add("active");
-        cartOverlay.classList.add("active");
-        document.body.style.overflow = "hidden"; // Impedir rolagem da página
-      }
-
-      // Função para fechar o modal do carrinho
-      function closeCartModal() {
-        console.log("Fechando modal do carrinho");
-        cartModal.classList.remove("active");
-        cartOverlay.classList.remove("active");
-        document.body.style.overflow = ""; // Restaurar rolagem da página
-      }
-
-      // Função para atualizar o conteúdo do modal do carrinho
-      function updateCartModal() {
-        if (!cartModalItems || !cartModalTotalValue) {
-          console.error("Elementos do modal não encontrados");
-          return;
-        }
-
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        console.log("Carrinho:", carrinho);
-
-        cartModalItems.innerHTML = "";
-
-        if (carrinho.length === 0) {
-          cartModalItems.innerHTML = '<p class="text-center">Sua sacola está vazia.</p>';
-          cartModalTotalValue.textContent = "R$ 0,00";
-          return;
-        }
-
-        let subtotal = 0;
-
-        carrinho.forEach((item, index) => {
-          // Converter o preço para número
-          const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
-          const preco = Number.parseFloat(precoTexto);
-          const total = preco * item.quantidade;
-          subtotal += total;
-
-          const itemElement = document.createElement("div");
-          itemElement.className = "cart-modal-item";
-          itemElement.innerHTML = `
-            <img src="${item.imagem}" alt="${item.nome}">
-            <div class="cart-modal-item-info">
-              <h5 class="cart-modal-item-name">${item.nome}</h5>
-              <p class="cart-modal-item-price">${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
-            }</p>
-              <div class="cart-modal-item-quantity">
-                <button class="decrease-quantity" data-index="${index}">-</button>
-                <span>${item.quantidade}</span>
-                <button class="increase-quantity" data-index="${index}">+</button>
-                <button class="cart-modal-item-remove" data-index="${index}">
-                  <span class="iconify" data-icon="mdi:trash-can-outline"></span>
-                </button>
-              </div>
-            </div>
-          `;
-
-          cartModalItems.appendChild(itemElement);
-        });
-
-        // Atualizar o valor total
-        cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
-
-        // Adicionar eventos aos botões de quantidade e remover
-        document.querySelectorAll(".decrease-quantity").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const index = this.getAttribute("data-index");
-            decreaseQuantity(index);
-          });
-        });
-
-        document.querySelectorAll(".increase-quantity").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const index = this.getAttribute("data-index");
-            increaseQuantity(index);
-          });
-        });
-
-        document.querySelectorAll(".cart-modal-item-remove").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const index = this.getAttribute("data-index");
-            removeFromCart(index);
-          });
-        });
-      }
-
-      // Função para diminuir a quantidade de um item
-      function decreaseQuantity(index) {
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        if (carrinho[index].quantidade > 1) {
-          carrinho[index].quantidade--;
-          localStorage.setItem("carrinho", JSON.stringify(carrinho));
-          updateCartModal();
-        }
-      }
-
-      // Função para aumentar a quantidade de um item
-      function increaseQuantity(index) {
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        carrinho[index].quantidade++;
-        localStorage.setItem("carrinho", JSON.stringify(carrinho));
-        updateCartModal();
-      }
-
-      // Função para remover um item do carrinho
-      function removeFromCart(index) {
-        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-        carrinho.splice(index, 1);
-        localStorage.setItem("carrinho", JSON.stringify(carrinho));
-        updateCartModal();
-      }
-
-      // Expor funções globalmente para uso em outras páginas
-      window.cartFunctions = {
-        openCartModal,
-        closeCartModal,
-        updateCartModal
-      };
-
-      // Carregar os produtos na página do carrinho
-      carregarProdutosCarrinho();
-    });
-
-    // Função para carregar os produtos na página do carrinho
-    function carregarProdutosCarrinho() {
-      const produtosContainer = document.getElementById("produtos-container");
-      if (!produtosContainer) return;
-
-      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-      // Manter apenas a legenda
-      const legenda = produtosContainer.querySelector(".card-legenda");
-      produtosContainer.innerHTML = "";
-      if (legenda) produtosContainer.appendChild(legenda);
-
-      if (carrinho.length === 0) {
-        const mensagemVazia = document.createElement("div");
-        mensagemVazia.className = "text-center my-5";
-        mensagemVazia.innerHTML = "<p>Sua sacola está vazia.</p>";
-        produtosContainer.appendChild(mensagemVazia);
-
-        // Atualizar o resumo da compra
-        atualizarResumoCompra(0);
-        return;
-      }
-
+      // Calcular subtotal
       let subtotal = 0;
 
-      // Adicionar os produtos
-      carrinho.forEach((item, index) => {
-        // Converter o preço para número
-        const precoTexto = item.preco.replace("R$ ", "").replace(".", "").replace(",", ".");
-        const preco = Number.parseFloat(precoTexto);
-        const total = preco * item.quantidade;
-        subtotal += total;
+      // Adicionar itens ao modal
+      cartItems.forEach(function (item, index) {
+        const precoNumerico = parseFloat(item.preco.replace("R$ ", "").replace(".", "").replace(",", "."));
+        subtotal += precoNumerico * item.quantidade;
 
-        const cardProduto = document.createElement("div");
-        cardProduto.className = "card-produto";
-        cardProduto.innerHTML = `
-          <img src="${item.imagem}" alt="${item.nome}">
-          <div class="produto-info">
-            <h5>${item.nome}</h5>
-            <p>Cód: ${item.id}</p>
-            ${item.tamanho ? `<p>Tamanho: ${item.tamanho}</p>` : ""}
-            ${item.cor ? `<p>Cor: ${item.cor}</p>` : ""}
-            <p class="preco">${item.preco}</p>
-          </div>
-          <div class="produto-total">
-            <input type="number" class="quantidade-input me-3" value="${item.quantidade}" min="1" data-index="${index}">
-            <span>R$ ${total.toFixed(2).replace(".", ",")}</span>
-            <span class="iconify fs-4" data-icon="mdi:trash-can-outline" style="cursor: pointer;" data-index="${index}"></span>
+        const itemElement = document.createElement("div");
+        itemElement.className = "cart-modal-item";
+        itemElement.innerHTML = `
+          <img src="${item.imagem_principal}" alt="${item.nome}" onerror="this.src='assets/placeholder.jpeg'">
+          <div class="cart-modal-item-info">
+            <h5 class="cart-modal-item-name">${item.nome}</h5>
+            <p class="cart-modal-item-price">R$ ${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""}</p>
+            <div class="cart-modal-item-quantity">
+              <button class="decrease-quantity" data-index="${index}">-</button>
+              <span>${item.quantidade}</span>
+              <button class="increase-quantity" data-index="${index}">+</button>
+              <button class="cart-modal-item-remove" data-index="${index}">
+                <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+              </button>
+            </div>
           </div>
         `;
-        produtosContainer.appendChild(cardProduto);
+
+        cartModalItems.appendChild(itemElement);
       });
 
-      // Adicionar eventos aos botões de quantidade e remover
-      document.querySelectorAll(".quantidade-input").forEach((input) => {
-        input.addEventListener("change", function () {
-          const index = this.getAttribute("data-index");
-          const novaQuantidade = parseInt(this.value);
+      // Atualizar valor total
+      cartModalTotalValue.textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
 
-          if (novaQuantidade < 1) {
+      // Adicionar eventos aos botões
+      document.querySelectorAll(".decrease-quantity").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const index = parseInt(this.getAttribute("data-index"));
+          decreaseQuantity(index);
+        });
+      });
+
+      document.querySelectorAll(".increase-quantity").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const index = parseInt(this.getAttribute("data-index"));
+          increaseQuantity(index);
+        });
+      });
+
+      document.querySelectorAll(".cart-modal-item-remove").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const index = parseInt(this.getAttribute("data-index"));
+          removeCartItem(index);
+        });
+      });
+    }
+
+    // Função para diminuir quantidade
+    function decreaseQuantity(index) {
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      if (cartItems[index] && cartItems[index].quantidade > 1) {
+        cartItems[index].quantidade--;
+        localStorage.setItem("carrinho", JSON.stringify(cartItems));
+        updateCartModal();
+      }
+    }
+
+    // Função para aumentar quantidade
+    function increaseQuantity(index) {
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      if (cartItems[index]) {
+        cartItems[index].quantidade++;
+        localStorage.setItem("carrinho", JSON.stringify(cartItems));
+        updateCartModal();
+      }
+    }
+
+    // Função para remover item do carrinho
+    function removeCartItem(index) {
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      cartItems.splice(index, 1);
+      localStorage.setItem("carrinho", JSON.stringify(cartItems));
+
+      // Atualizar modal e página
+      updateCartModal();
+      loadCartItems();
+    }
+
+   
+    function loadCartItems() {
+      const produtosContainer = document.getElementById("produtos-container");
+
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+      produtosContainer.innerHTML = "";
+
+      if (cartItems.length === 0) {
+        produtosContainer.innerHTML = '<div class="text-center my-5"><p>Sua sacola está vazia.</p></div>';
+        updateCartSummary();
+        return;
+      }
+
+      cartItems.forEach(function (item, index) {
+        const produtoElement = document.createElement("div");
+        produtoElement.className = "produto-carrinho";
+        produtoElement.dataset.id = item.id;
+        produtoElement.innerHTML = `
+          <div class="produto-checkbox">
+            <input type="checkbox" id="item-${index}" class="item-checkbox" checked data-id="${item.id}">
+          </div>
+          <img src="${item.imagem_principal}" alt="${item.nome}" class="produto-imagem" onerror="this.classList.add('error')">
+          <div class="produto-detalhes">
+            <h5 class="produto-nome">${item.nome}</h5>
+            <p class="produto-codigo">Cód: ${item.id}</p>
+            ${item.tamanho || item.cor ? `<p class="produto-variacao">${item.tamanho ? `Tamanho: ${item.tamanho}` : ''} ${item.cor ? `• Cor: ${item.cor}` : ''}</p>` : ''}
+            
+            <div class="produto-acoes">
+              <div class="quantidade-controle">
+                <button class="quantidade-btn decrease-btn" data-id="${item.id}">
+                  <span class="iconify" data-icon="mdi:minus"></span>
+                </button>
+                <input type="number" class="quantidade-input" value="${item.quantidade}" min="1" data-id="${item.id}">
+                <button class="quantidade-btn increase-btn" data-id="${item.id}">
+                  <span class="iconify" data-icon="mdi:plus"></span>
+                </button>
+              </div>
+              <button class="btn-excluir" data-id="${item.id}">
+                <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+              </button>
+            </div>
+
+            <div class="produto-acoes-links">
+              <a href="#" class="excluir-link" data-id="${item.id}">
+                <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+                Excluir
+              </a>
+             
+            </div>
+          </div>
+          <div class="produto-preco-info">
+            <p class="produto-preco">R$ ${item.preco}</p>
+            
+        `;
+
+        produtosContainer.appendChild(produtoElement);
+      });
+
+      addCartEvents();
+
+      updateCartSummary();
+    }
+
+   
+    function addCartEvents() {
+      // Checkboxes
+      document.querySelectorAll('.item-checkbox').forEach(function (checkbox) {
+        checkbox.addEventListener("change", updateCartSummary);
+      });
+
+      document.querySelectorAll(".decrease-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const itemId = this.getAttribute("data-id");
+          const input = document.querySelector(`.quantidade-input[data-id="${itemId}"]`);
+
+          if (parseInt(input.value) > 1) {
+            input.value = parseInt(input.value) - 1;
+            updateItemQuantity(itemId, parseInt(input.value));
+          }
+        });
+      });
+
+      document.querySelectorAll(".increase-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const itemId = this.getAttribute("data-id");
+          const input = document.querySelector(`.quantidade-input[data-id="${itemId}"]`);
+
+          input.value = parseInt(input.value) + 1;
+          updateItemQuantity(itemId, parseInt(input.value));
+        });
+      });
+
+      document.querySelectorAll(".quantidade-input").forEach(function (input) {
+        input.addEventListener("change", function () {
+          const itemId = this.getAttribute("data-id");
+          let quantidade = parseInt(this.value);
+
+          if (quantidade < 1) {
+            quantidade = 1;
             this.value = 1;
-            return;
           }
 
-          atualizarQuantidadeProduto(index, novaQuantidade);
+          updateItemQuantity(itemId, quantidade);
         });
       });
 
-      document.querySelectorAll('[data-icon="mdi:trash-can-outline"]').forEach((botao) => {
-        botao.addEventListener("click", function () {
-          const index = this.getAttribute("data-index");
-          removerProduto(index);
+      // excluir
+      document.querySelectorAll(".btn-excluir, .excluir-link").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const itemId = this.getAttribute("data-id");
+          removeItemById(itemId);
         });
       });
-
-      // Atualizar o resumo da compra
-      atualizarResumoCompra(subtotal);
     }
 
-    // Função para atualizar a quantidade de um produto
-    function atualizarQuantidadeProduto(index, quantidade) {
-      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      carrinho[index].quantidade = quantidade;
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      carregarProdutosCarrinho();
+    // att qntd
+    function updateItemQuantity(itemId, quantidade) {
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+      const itemIndex = cartItems.findIndex(item => item.id === itemId);
+
+      if (itemIndex !== -1) {
+        cartItems[itemIndex].quantidade = quantidade;
+        localStorage.setItem("carrinho", JSON.stringify(cartItems));
+        updateCartSummary();
+      }
     }
 
-    // Função para remover um produto
-    function removerProduto(index) {
-      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      carrinho.splice(index, 1);
-      localStorage.setItem("carrinho", JSON.stringify(carrinho));
-      carregarProdutosCarrinho();
+    
+    function removeItemById(itemId) {
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+      const updatedItems = cartItems.filter(item => item.id !== itemId);
+
+      localStorage.setItem("carrinho", JSON.stringify(updatedItems));
+      loadCartItems();
     }
 
-    // Função para atualizar o resumo da compra
-    function atualizarResumoCompra(subtotal) {
-      const frete = subtotal > 0 ? 20 : 0; // Frete fixo de R$ 20,00 se houver produtos
+    function updateCartSummary() {
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+      const checkedItems = document.querySelectorAll('.item-checkbox:checked');
+
+      let subtotal = 0;
+      let itensSelecionados = checkedItems.length;
+
+      checkedItems.forEach(function (checkbox) {
+        const itemId = checkbox.getAttribute("data-id");
+        const item = cartItems.find(item => item.id === itemId);
+
+        if (item) {
+          const preco = parseFloat(item.preco.replace("R$ ", "").replace(".", "").replace(",", "."));
+          const quantidade = parseInt(document.querySelector(`.quantidade-input[data-id="${itemId}"]`).value);
+          subtotal += preco * quantidade;
+        }
+      });
+
+      const frete = subtotal > 0 ? 20 : 0;
       const total = subtotal + frete;
 
+      document.getElementById("itens-selecionados").textContent = itensSelecionados;
       document.getElementById("resumo-subtotal").textContent = `R$ ${subtotal.toFixed(2).replace(".", ",")}`;
       document.getElementById("resumo-frete").textContent = `R$ ${frete.toFixed(2).replace(".", ",")}`;
       document.getElementById("resumo-total").textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
 
-      // Desabilitar o botão de avançar se o carrinho estiver vazio
-      const btnAvancar = document.querySelector(".btn-avancar");
-      if (btnAvancar) {
-        if (subtotal === 0) {
-          btnAvancar.disabled = true;
-          btnAvancar.style.opacity = "0.5";
-          btnAvancar.style.cursor = "not-allowed";
-        } else {
-          btnAvancar.disabled = false;
-          btnAvancar.style.opacity = "1";
-          btnAvancar.style.cursor = "pointer";
-        }
+      const btnFinalizar = document.getElementById("btn-finalizar");
+
+      if (itensSelecionados === 0) {
+        btnFinalizar.disabled = true;
+        btnFinalizar.style.opacity = "0.5";
+        btnFinalizar.style.cursor = "not-allowed";
+      } else {
+        btnFinalizar.disabled = false;
+        btnFinalizar.style.opacity = "1";
+        btnFinalizar.style.cursor = "pointer";
       }
+    }
+
+    function toggleAllItems(checked) {
+      document.querySelectorAll('.item-checkbox').forEach(function (checkbox) {
+        checkbox.checked = checked;
+      });
+
+      updateCartSummary();
+    }
+
+    // Função para finalizar compra
+    function finalizarCompra() {
+      const cartItems = JSON.parse(localStorage.getItem("carrinho")) || [];
+      const checkedItems = document.querySelectorAll('.item-checkbox:checked');
+
+      if (checkedItems.length === 0) {
+        alert("Selecione pelo menos um item para continuar.");
+        return;
+      }
+
+      // Criar array com itens selecionados
+      const selectedItems = [];
+
+      checkedItems.forEach(function (checkbox) {
+        const itemId = checkbox.getAttribute("data-id");
+        const item = cartItems.find(item => item.id === itemId);
+
+        if (item) {
+          const quantidade = parseInt(document.querySelector(`.quantidade-input[data-id="${itemId}"]`).value);
+          selectedItems.push({
+            ...item,
+            quantidade: quantidade
+          });
+        }
+      });
+
+      // Salvar itens selecionados para o checkout
+      localStorage.setItem("checkoutItems", JSON.stringify(selectedItems));
+
+      // Redirecionar para o checkout
+      window.location.href = "checkout.html";
     }
   </script>
 </body>
