@@ -8,6 +8,24 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <style>
+    .logo-responsive {
+      display: block !important;
+      height: 40px !important;
+    }
+
+    @media (max-width: 992px) {
+      .logo-responsive {
+        height: 35px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-responsive {
+        height: 30px !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -18,7 +36,7 @@
         <a href="#" id="menu-toggle">
           <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
         </a>
-        <div class="search-container">
+        <div class="search-container d-none d-md-block">
           <form id="search-form" class="d-flex">
             <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
             <button type="submit" class="search-button">
@@ -26,47 +44,100 @@
             </button>
           </form>
         </div>
+        <button class="mobile-search-btn d-md-none" id="mobile-search-btn">
+          <span class="iconify" data-icon="mdi:magnify"></span>
+        </button>
       </div>
-      <a href="index.html">
-        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40" class="logo-responsive">
       </a>
-      <a href="carrinho.html">
+      <a href="#" id="cart-toggle">
         <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
       </a>
     </div>
   </nav>
 
-  <!-- Menu Dropdown -->
-  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none; position: absolute; width: 100%; z-index: 1000;">
-    <div class="row">
-      <div class="col">
-        <h6 class="fw-bold">Categoria</h6>
-        <p><a href="#" data-categoria="camiseta">Camiseta</a><br>
-          <a href="#" data-categoria="moletom">Moletom</a><br>
-          <a href="#" data-categoria="calca">Calças</a><br>
-          <a href="#" data-categoria="bag">Bags</a><br>
-          <a href="#" data-categoria="bone">Bonés</a><br>
-          <a href="#" data-categoria="tenis">Tênis</a>
-        </p>
+  <!-- Modal de Pesquisa Mobile -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-content">
+      <button class="search-modal-close" id="search-modal-close">&times;</button>
+      <h4 style="margin-bottom: 15px;">Buscar Produtos</h4>
+      <form id="mobile-search-form">
+        <input type="text" id="mobile-search-input" class="search-modal-input" placeholder="Digite o que você procura...">
+        <button type="submit" class="search-modal-btn">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Menu Dropdown Lateral -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <div id="menu-dropdown">
+    <div class="menu-header">
+      <h4>Menu</h4>
+      <button class="menu-close" id="menu-close">&times;</button>
+    </div>
+    <div class="menu-categories">
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Categoria
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="#" data-categoria="camiseta">Camiseta</a></li>
+          <li><a href="#" data-categoria="moletom">Moletom</a></li>
+          <li><a href="#" data-categoria="calca">Calças</a></li>
+          <li><a href="#" data-categoria="bag">Bags</a></li>
+          <li><a href="#" data-categoria="bone">Bonés</a></li>
+          <li><a href="#" data-categoria="tenis">Tênis</a></li>
+        </ul>
       </div>
-      <div class="col">
-        <h6 class="fw-bold">Marcas</h6>
-        <p><a href="#" data-marca="kenner">Kenner</a><br>
-          <a href="#" data-marca="norden">Norden</a><br>
-          <a href="#" data-marca="vans">Vans</a><br>
-          <a href="#" data-marca="volcom">Volcom</a><br>
-          <a href="#" data-marca="blunt">Blunt</a><br>
-          <a href="#" data-marca="chronic">Chronic</a><br>
-          <a href="#" data-marca="tripside">Tripside</a>
-        </p>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Marcas
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="#" data-marca="kenner">Kenner</a></li>
+          <li><a href="#" data-marca="norden">Norden</a></li>
+          <li><a href="#" data-marca="vans">Vans</a></li>
+          <li><a href="#" data-marca="volcom">Volcom</a></li>
+          <li><a href="#" data-marca="blunt">Blunt</a></li>
+          <li><a href="#" data-marca="chronic">Chronic</a></li>
+          <li><a href="#" data-marca="tripside">Tripside</a></li>
+        </ul>
       </div>
-      <div class="col">
-        <h6 class="fw-bold">Coleção</h6>
-        <p><a href="#" data-colecao="blunt-summer">Blunt Summer</a><br>
-          <a href="#" data-colecao="seven-sins">Seven Sins</a><br>
-          <a href="#" data-colecao="chronic-setembro">Chronic Setembro</a><br>
-          <a href="#" data-colecao="vans-fall">Vans Fall</a>
-        </p>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Coleção
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="#" data-colecao="blunt-summer">Blunt Summer</a></li>
+          <li><a href="#" data-colecao="seven-sins">Seven Sins</a></li>
+          <li><a href="#" data-colecao="chronic-setembro">Chronic Setembro</a></li>
+          <li><a href="#" data-colecao="vans-fall">Vans Fall</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal do Carrinho -->
+  <div class="overlay" id="cart-overlay"></div>
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-header">
+      <h4>Minha Sacola</h4>
+      <button class="cart-modal-close" id="cart-modal-close">&times;</button>
+    </div>
+    <div class="cart-modal-items" id="cart-modal-items">
+    </div>
+    <div class="cart-modal-footer">
+      <div class="cart-modal-total">
+        <span>Total:</span>
+        <span id="cart-modal-total-value">R$ 0,00</span>
+      </div>
+      <div class="cart-modal-buttons">
+        <button class="cart-modal-checkout" id="cart-modal-checkout">Finalizar Compra</button>
+        <button class="cart-modal-continue" id="cart-modal-continue">Continuar Comprando</button>
       </div>
     </div>
   </div>
@@ -78,8 +149,8 @@
 
   <!-- Título -->
   <div class="text-center my-4">
-    <h2 style="font-size: 32px; font-weight: 400; margin-bottom: 1.875rem;">
-      Resultado Pesquisa
+    <h2 id="page-title" style="font-size: 32px; font-weight: 400; margin-bottom: 1.875rem;">
+      Catálogo de Produtos
     </h2>
   </div>
 
@@ -88,62 +159,40 @@
     <div class="row justify-content-between align-items-center">
       <div class="col-md-9 d-flex flex-wrap gap-3">
         <div class="dropdown">
-          <button class="btn btn-outline-dark dropdown-toggle text-uppercase" style="border-radius: 25px; font-size: 20px; font-weight: 400;" type="button" data-bs-toggle="dropdown">
+          <button class="btn btn-outline-dark dropdown-toggle text-uppercase filter-btn" type="button" data-bs-toggle="dropdown">
             Categoria <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" data-categoria="camiseta">Camisetas</a></li>
-            <li><a class="dropdown-item" href="#" data-categoria="moletom">Moletons</a></li>
-            <li><a class="dropdown-item" href="#" data-categoria="calca">Calças</a></li>
-            <li><a class="dropdown-item" href="#" data-categoria="bone">Bonés</a></li>
-            <li><a class="dropdown-item" href="#" data-categoria="tenis">Tênis</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="categoria" data-value="">Todas</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="categoria" data-value="camiseta">Camisetas</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="categoria" data-value="moletom">Moletons</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="categoria" data-value="calca">Calças</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="categoria" data-value="bone">Bonés</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="categoria" data-value="tenis">Tênis</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="categoria" data-value="bag">Bags</a></li>
           </ul>
         </div>
         <div class="dropdown">
-          <button class="btn btn-outline-dark dropdown-toggle text-uppercase" style="border-radius: 25px; font-size: 20px; font-weight: 400;" type="button" data-bs-toggle="dropdown">
-            Cor <span class="iconify" data-icon="mdi:chevron-down"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" data-cor="preto">Preto</a></li>
-            <li><a class="dropdown-item" href="#" data-cor="branco">Branco</a></li>
-            <li><a class="dropdown-item" href="#" data-cor="vermelho">Vermelho</a></li>
-            <li><a class="dropdown-item" href="#" data-cor="azul">Azul</a></li>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <button class="btn btn-outline-dark dropdown-toggle text-uppercase" style="border-radius: 25px; font-size: 20px; font-weight: 400;" type="button" data-bs-toggle="dropdown">
-            Tamanho <span class="iconify" data-icon="mdi:chevron-down"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" data-tamanho="p">P</a></li>
-            <li><a class="dropdown-item" href="#" data-tamanho="m">M</a></li>
-            <li><a class="dropdown-item" href="#" data-tamanho="g">G</a></li>
-            <li><a class="dropdown-item" href="#" data-tamanho="gg">GG</a></li>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <button class="btn btn-outline-dark dropdown-toggle text-uppercase" style="border-radius: 25px; font-size: 20px; font-weight: 400;" type="button" data-bs-toggle="dropdown">
+          <button class="btn btn-outline-dark dropdown-toggle text-uppercase filter-btn" type="button" data-bs-toggle="dropdown">
             Marca <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" data-marca="thrasher">Thrasher</a></li>
-            <li><a class="dropdown-item" href="#" data-marca="volcom">Volcom</a></li>
-            <li><a class="dropdown-item" href="#" data-marca="chronic">Chronic</a></li>
-            <li><a class="dropdown-item" href="#" data-marca="vans">Vans</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="marca" data-value="">Todas</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="marca" data-value="thrasher">Thrasher</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="marca" data-value="volcom">Volcom</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="marca" data-value="chronic">Chronic</a></li>
+            <li><a class="dropdown-item filter-option" href="#" data-filter="marca" data-value="vans">Vans</a></li>
           </ul>
         </div>
-      </div>
-
-      <div class="col-md-3 d-flex justify-content-end align-items-center">
-        <span class="me-2 text-secondary d-none d-md-block" style="font-size: 20px; font-weight: 400;">ORDENAR POR:</span>
         <div class="dropdown">
-          <button class="btn btn-outline-dark dropdown-toggle" style="border-radius: 25px; font-size: 20px; font-weight: 400;" type="button" data-bs-toggle="dropdown">
-            Mais vendidos <span class="iconify" data-icon="mdi:chevron-down"></span>
+          <button class="btn btn-outline-dark dropdown-toggle text-uppercase filter-btn" type="button" data-bs-toggle="dropdown">
+            Ordenar <span class="iconify" data-icon="mdi:chevron-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" data-ordem="recentes">Mais recentes</a></li>
-            <li><a class="dropdown-item" href="#" data-ordem="menor-preco">Menor Preço</a></li>
-            <li><a class="dropdown-item" href="#" data-ordem="maior-preco">Maior Preço</a></li>
+            <li><a class="dropdown-item sort-option" href="#" data-sort="relevancia">Mais relevantes</a></li>
+            <li><a class="dropdown-item sort-option" href="#" data-sort="menor-preco">Menor preço</a></li>
+            <li><a class="dropdown-item sort-option" href="#" data-sort="maior-preco">Maior preço</a></li>
+            <li><a class="dropdown-item sort-option" href="#" data-sort="nome">Nome A-Z</a></li>
           </ul>
         </div>
       </div>
@@ -151,18 +200,22 @@
 
     <div class="row mt-3">
       <div class="col">
-        <p class="text-secondary produtos-encontrados" style="font-size: 20px; font-weight: 300;">12 produtos encontrados</p>
+        <p class="text-secondary produtos-encontrados" style="font-size: 20px; font-weight: 300;">
+          <span id="produtos-count">0</span> produtos encontrados
+        </p>
       </div>
     </div>
   </div>
 
   <!-- Resultados da Pesquisa -->
-  <div class="container mb-5" id="resultados-pesquisa">
-    <!-- Os resultados serão inseridos aqui via JavaScript -->
+  <div class="container mb-5">
+    <div class="cards-wrapper" id="resultados-pesquisa">
+      <!-- Os resultados serão inseridos aqui via JavaScript -->
+    </div>
   </div>
 
   <!-- Paginação -->
-  <div class="d-flex justify-content-center my-5 gap-2">
+  <div class="d-flex justify-content-center my-5 gap-2" id="pagination-container">
     <a href="#" class="page-box active" data-page="1">1</a>
     <a href="#" class="page-box" data-page="2">2</a>
     <a href="#" class="page-box" data-page="3">3</a>
@@ -172,9 +225,8 @@
   <footer class="footer-container">
     <div class="footer">
       <div class="footer-section">
-        <img src="assets/images/logo_preta.png" alt="Logo Sombra" style="height: 45px;">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" class="footer-logo">
       </div>
-
       <div class="footer-section">
         <h2>Institucional</h2>
         <ul>
@@ -184,10 +236,9 @@
           <li><a href="#">Segurança</a></li>
           <li><a href="#">Pagamento</a></li>
           <li><a href="#">Fale conosco</a></li>
-          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
         </ul>
       </div>
-
       <div class="footer-section">
         <h2>Contato</h2>
         <ul>
@@ -195,7 +246,6 @@
           <li><a href="#"><i class="fa fa-instagram"></i> @sombraroupas</a></li>
         </ul>
       </div>
-
       <div class="footer-section">
         <h2>Pagamento</h2>
         <ul>
@@ -203,7 +253,6 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <hr />
       <p>&copy; 2025 Todos os direitos reservados. Criado por <a href="#" target="_blank" rel="noopener noreferrer">Romulus</a></p>
@@ -211,8 +260,9 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="dados.js"></script>
   <script src="script.js"></script>
-  <script src="breadcrumb.js"></script>
+  <script src="catalogo.js"></script>
 </body>
 
 </html>

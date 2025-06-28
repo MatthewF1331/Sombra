@@ -11,13 +11,14 @@
 </head>
 
 <body>
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top bg-black shadow-sm">
     <div class="container-fluid justify-content-between px-4">
       <div class="d-flex align-items-center gap-3">
         <a href="#" id="menu-toggle">
           <span class="iconify text-white fs-3" data-icon="mdi:menu"></span>
         </a>
-        <div class="search-container">
+        <div class="search-container d-none d-md-block">
           <form id="search-form" class="d-flex">
             <input type="text" id="search-input" class="form-control search-input" placeholder="Buscar produtos...">
             <button type="submit" class="search-button">
@@ -25,9 +26,12 @@
             </button>
           </form>
         </div>
+        <button class="mobile-search-btn d-md-none" id="mobile-search-btn">
+          <span class="iconify" data-icon="mdi:magnify"></span>
+        </button>
       </div>
-      <a href="index.html">
-        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40">
+      <a href="index.html" class="navbar-brand">
+        <img src="assets/images/logo_preta.png" alt="Logo Sombra" height="40" class="logo-responsive">
       </a>
       <a href="#" id="cart-toggle">
         <span class="iconify text-white fs-3" data-icon="mdi:shopping"></span>
@@ -35,40 +39,71 @@
     </div>
   </nav>
 
-  <div id="menu-dropdown" class="bg-white shadow-lg px-5 py-4" style="margin-top: 85px; display: none; position: absolute; width: 100%; z-index: 1000;">
-    <div class="row">
-      <div class="col">
-        <h6 class="fw-bold">Categoria</h6>
-        <p><a href="#" data-categoria="camiseta">Camiseta</a><br>
-          <a href="#" data-categoria="moletom">Moletom</a><br>
-          <a href="#" data-categoria="calca">Calças</a><br>
-          <a href="#" data-categoria="bag">Bags</a><br>
-          <a href="#" data-categoria="bone">Bonés</a><br>
-          <a href="#" data-categoria="tenis">Tênis</a>
-        </p>
+  <!-- Modal de Pesquisa Mobile -->
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-content">
+      <button class="search-modal-close" id="search-modal-close">&times;</button>
+      <h4 style="margin-bottom: 15px;">Buscar Produtos</h4>
+      <form id="mobile-search-form">
+        <input type="text" id="mobile-search-input" class="search-modal-input" placeholder="Digite o que você procura...">
+        <button type="submit" class="search-modal-btn">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Menu Dropdown Lateral -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <div id="menu-dropdown">
+    <div class="menu-header">
+      <h4>Menu</h4>
+      <button class="menu-close" id="menu-close">&times;</button>
+    </div>
+    <div class="menu-categories">
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Categoria
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?categoria=camiseta" data-categoria="camiseta">Camiseta</a></li>
+          <li><a href="catalogo.html?categoria=moletom" data-categoria="moletom">Moletom</a></li>
+          <li><a href="catalogo.html?categoria=calca" data-categoria="calca">Calças</a></li>
+          <li><a href="catalogo.html?categoria=bag" data-categoria="bag">Bags</a></li>
+          <li><a href="catalogo.html?categoria=bone" data-categoria="bone">Bonés</a></li>
+          <li><a href="catalogo.html?categoria=tenis" data-categoria="tenis">Tênis</a></li>
+        </ul>
       </div>
-      <div class="col">
-        <h6 class="fw-bold">Marcas</h6>
-        <p><a href="#" data-marca="kenner">Kenner</a><br>
-          <a href="#" data-marca="norden">Norden</a><br>
-          <a href="#" data-marca="vans">Vans</a><br>
-          <a href="#" data-marca="volcom">Volcom</a><br>
-          <a href="#" data-marca="blunt">Blunt</a><br>
-          <a href="#" data-marca="chronic">Chronic</a><br>
-          <a href="#" data-marca="tripside">Tripside</a>
-        </p>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Marcas
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?marca=kenner" data-marca="kenner">Kenner</a></li>
+          <li><a href="catalogo.html?marca=norden" data-marca="norden">Norden</a></li>
+          <li><a href="catalogo.html?marca=vans" data-marca="vans">Vans</a></li>
+          <li><a href="catalogo.html?marca=volcom" data-marca="volcom">Volcom</a></li>
+          <li><a href="catalogo.html?marca=blunt" data-marca="blunt">Blunt</a></li>
+          <li><a href="catalogo.html?marca=chronic" data-marca="chronic">Chronic</a></li>
+          <li><a href="catalogo.html?marca=tripside" data-marca="tripside">Tripside</a></li>
+        </ul>
       </div>
-      <div class="col">
-        <h6 class="fw-bold">Coleção</h6>
-        <p><a href="#" data-colecao="blunt-summer">Blunt Summer</a><br>
-          <a href="#" data-colecao="seven-sins">Seven Sins</a><br>
-          <a href="#" data-colecao="chronic-setembro">Chronic Setembro</a><br>
-          <a href="#" data-colecao="vans-fall">Vans Fall</a>
-        </p>
+      <div class="menu-category">
+        <div class="menu-category-title">
+          Coleção
+          <span class="iconify" data-icon="mdi:chevron-down"></span>
+        </div>
+        <ul class="menu-category-items">
+          <li><a href="catalogo.html?colecao=blunt-summer" data-colecao="blunt-summer">Blunt Summer</a></li>
+          <li><a href="catalogo.html?colecao=seven-sins" data-colecao="seven-sins">Seven Sins</a></li>
+          <li><a href="catalogo.html?colecao=chronic-setembro" data-colecao="chronic-setembro">Chronic Setembro</a></li>
+          <li><a href="catalogo.html?colecao=vans-fall" data-colecao="vans-fall">Vans Fall</a></li>
+        </ul>
       </div>
     </div>
   </div>
 
+  <!-- Modal do Carrinho -->
   <div class="overlay" id="cart-overlay"></div>
   <div class="cart-modal" id="cart-modal">
     <div class="cart-modal-header">
@@ -76,7 +111,6 @@
       <button class="cart-modal-close" id="cart-modal-close">&times;</button>
     </div>
     <div class="cart-modal-items" id="cart-modal-items">
-      <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
     </div>
     <div class="cart-modal-footer">
       <div class="cart-modal-total">
@@ -95,68 +129,70 @@
   </div>
 
   <div class="container-fluid mt-3 pt-3" id="detalhes-produto">
-    <div class="row px-4 py-5">
-      <!-- IMAGENS -->
-      <div class="col-lg-6 d-flex justify-content-end">
-        <div class="d-flex">
-          <div class="d-flex flex-column me-3">
-            <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 1">
-            <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 2">
-            <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 3">
-          </div>
-          <img src="/placeholder.svg" class="img-principal" id="imagem" alt="Produto Principal">
+  <div class="row px-4 gy-4" style="padding-bottom: 3rem;">
+    <!-- IMAGENS -->
+    <div class="col-lg-6">
+
+      <div class="d-flex justify-content-center justify-content-lg-end flex-column flex-md-row gap-3">
+        <!-- Miniaturas (lado esquerdo em telas grandes) -->
+        <div class="d-flex flex-md-column gap-2 order-md-0 order-1">
+          <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 1">
+          <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 2">
+          <img src="assets/images/img1.jpg" class="img-miniatura" alt="Miniatura 3">
+        </div>
+        <div class="order-md-1 order-0">
+          <img src="assets/placeholder.jpeg" class="img-fluid img-principal" id="imagem_principal" alt="Imagem Principal">
         </div>
       </div>
 
-      <div class="col-lg-6 d-flex flex-column justify-content-start">
-        <div class="mb-3">
-          <h2 class="fw-semibold" style="font-size: 24px;" id="nome"></h2>
-          <p class="text-muted" style="font-size: 16px;" id="id"></p>
-          <p class="fw-normal" style="font-size: 32px;" id="preco"></p>
-        </div>
+    </div>
 
-        <div class="mb-4">
-          <p class="fw-semibold mb-1" style="font-size: 12px;">Tamanhos</p>
-          <div class="d-flex">
-            <button class="tamanho-btn">P</button>
-            <button class="tamanho-btn">M</button>
-            <button class="tamanho-btn">G</button>
-            <button class="tamanho-btn">XG</button>
-            <button class="tamanho-btn">XXG</button>
-          </div>
-        </div>
+    <!-- DESCRIÇÃO -->
+    <div class="col-lg-6">
+      <div class="mb-3">
+        <h2 class="fw-semibold" style="font-size: 24px;" id="nome"></h2>
+        <p class="text-muted" style="font-size: 16px;" id="id"></p>
+        <p class="fw-normal" style="font-size: 32px;" id="preco"></p>
+      </div>
 
-        <div class="mb-4">
-          <p class="fw-semibold mb-1" style="font-size: 12px;">Cores</p>
-          <div class="d-flex">
-            <div class="cor-opcao bg-danger" data-cor="vermelho"></div>
-            <div class="cor-opcao bg-dark" data-cor="preto"></div>
-            <div class="cor-opcao bg-primary" data-cor="azul"></div>
-            <div class="cor-opcao bg-success" data-cor="verde"></div>
-          </div>
+      <div class="mb-4">
+        <p class="fw-semibold mb-1" style="font-size: 12px;">Tamanhos</p>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="tamanho-btn">P</button>
+          <button class="tamanho-btn">M</button>
+          <button class="tamanho-btn">G</button>
+          <button class="tamanho-btn">XG</button>
+          <button class="tamanho-btn">XXG</button>
         </div>
+      </div>
 
-        <div class="d-flex align-items-center mb-4">
-          <input type="number" class="quantidade-input me-3" value="1" min="1">
-          <button class="btn-adicionar">Adicionar à Sacola</button>
+      <div class="mb-4">
+        <p class="fw-semibold mb-1" style="font-size: 12px;">Cores</p>
+        <div class="d-flex flex-wrap gap-2">
+          <div class="cor-opcao bg-danger" data-cor="vermelho"></div>
+          <div class="cor-opcao bg-dark" data-cor="preto"></div>
+          <div class="cor-opcao bg-primary" data-cor="azul"></div>
+          <div class="cor-opcao bg-success" data-cor="verde"></div>
         </div>
+      </div>
 
-        <div>
-          <h4 class="fw-semibold" style="font-size: 20px;">Descrição</h4>
-          <p class="text-muted" style="font-size: 16px;" id="descricao">
-          </p>
-        </div>
+      <div class="d-flex align-items-center mb-4 gap-3 flex-wrap">
+        <input type="number" class="quantidade-input" value="1" min="1">
+        <button class="btn-adicionar">Adicionar à Sacola</button>
+      </div>
 
-        <div>
-          <h4 class="fw-semibold" style="font-size: 20px;">Detalhes</h4>
-          <p class="text-muted" style="font-size: 16px;">
-          <ul id="detalhes">
-          </ul>
-          </p>
-        </div>
+      <div>
+        <h4 class="fw-semibold" style="font-size: 20px;">Descrição</h4>
+        <p class="text-muted" style="font-size: 16px;" id="descricao"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-semibold" style="font-size: 20px;">Detalhes</h4>
+        <ul class="text-muted" style="font-size: 16px;" id="detalhes"></ul>
       </div>
     </div>
   </div>
+</div>
 
   <section class="carrossel-container">
     <h2 class="categoria">Veja Também</h2>
@@ -181,7 +217,7 @@
           <li><a href="#">Segurança</a></li>
           <li><a href="#">Pagamento</a></li>
           <li><a href="#">Fale conosco</a></li>
-          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
         </ul>
       </div>
 
@@ -294,10 +330,10 @@
           const itemElement = document.createElement("div");
           itemElement.className = "cart-modal-item";
           itemElement.innerHTML = `
-            <img src="${item.imagem}" alt="${item.nome}">
+            <img src="${item.imagem_principal}" alt="${item.nome}">
             <div class="cart-modal-item-info">
               <h5 class="cart-modal-item-name">${item.nome}</h5>
-              <p class="cart-modal-item-price">${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
+              <p class="cart-modal-item-price">R$ ${item.preco} ${item.tamanho ? `• Tam: ${item.tamanho}` : ""} ${item.cor ? `• Cor: ${item.cor}` : ""
             }</p>
               <div class="cart-modal-item-quantity">
                 <button class="decrease-quantity" data-index="${index}">-</button>

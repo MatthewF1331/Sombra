@@ -1,116 +1,57 @@
 [
-  {
-    "id": "N3XZQWPY1",
-    "nome": "Camiseta Thrasher Fire - Preta",
-    "preco": "R$ 199,90",
-    "imagem": "assetsimagesimg1.jpg",
-    "descricao": "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
-    "categoria": "camiseta",
-    "marca": "thrasher",
-    "detalhes": ["Composição: 100% algodão", "Modelagem regular", "Manga curta"]
-  },
-  {
-    "id": "N3XZQWPY2",
-    "nome": "Camiseta Chronic - Preta",
-    "preco": "R$ 199,90",
-    "imagem": "assetsimagesimg2.jpg",
-    "descricao": "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
-    "categoria": "camiseta",
-    "marca": "chronic",
-    "detalhes": ["Composição: 100% algodão", "Modelagem regular", "Manga curta"]
-  },
-  {
-    "id": "N3XZQWPY3",
-    "nome": "Camiseta Volcom - Preta",
-    "preco": "R$ 199,90",
-    "imagem": "assetsimagesimg3.jpg",
-    "descricao": "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
-    "categoria": "camiseta",
-    "marca": "volcom",
-    "detalhes": ["Composição: 100% algodão", "Modelagem regular", "Manga curta"]
-  },
-  {
-    "id": "N3XZQWPY4",
-    "nome": "Boné Thrasher - Preto",
-    "preco": "R$ 159,90",
-    "imagem": "assetsimagesimg4.jpg",
-    "descricao": "Boné confeccionado em material de alta qualidade com ajuste snapback. Bordado frontal e acabamento premium.",
-    "categoria": "bone",
-    "marca": "thrasher",
-    "detalhes": [
-      "Composição: 100% algodão",
-      "Ajuste snapback",
-      "Bordado frontal"
-    ]
-  },
-  {
-    "id": "N3XZQWPY5",
-    "nome": "Moletom Vans - Preto",
-    "preco": "R$ 299,90",
-    "imagem": "assetsimagesimg1.jpg",
-    "descricao": "Moletom confeccionado em algodão e poliéster de alta qualidade. Confortável e durável, perfeito para os dias mais frios.",
-    "categoria": "moletom",
-    "marca": "vans",
-    "detalhes": [
-      "Composição: 80% algodão, 20% poliéster",
-      "Modelagem regular",
-      "Bolso canguru"
-    ]
-  },
-  {
-    "id": "N3XZQWPY6",
-    "nome": "Calça Cargo Volcom - Preta",
-    "preco": "R$ 359,90",
-    "imagem": "assetsimagesimg2.jpg",
-    "descricao": "Calça cargo confeccionada em sarja resistente. Múltiplos bolsos e design moderno para o dia a dia.",
-    "categoria": "calca",
-    "marca": "volcom",
-    "detalhes": [
-      "Composição: 100% algodão",
-      "Modelagem regular",
-      "Múltiplos bolsos"
-    ]
-  },
-  {
-    "id": "N3XZQWPY7",
-    "nome": "Tênis Vans Old Skool - Preto",
-    "preco": "R$ 399,90",
-    "imagem": "assetsimagesimg3.jpg",
-    "descricao": "O clássico tênis Vans Old Skool em couro e lona. Confortável e durável, combina com qualquer look.",
-    "categoria": "tenis",
-    "marca": "vans",
-    "detalhes": [
-      "Composição: Couro e lona",
-      "Solado de borracha",
-      "Cadarço tradicional"
-    ]
-  },
-  {
-    "id": "N3XZQWPY8",
-    "nome": "Tênis Vans Old Skool - Preto",
-    "preco": "R$ 399,90",
-    "imagem": "assetsimagesimg3.jpg",
-    "descricao": "O clássico tênis Vans Old Skool em couro e lona. Confortável e durável, combina com qualquer look.",
-    "categoria": "tenis",
-    "marca": "vans",
-    "detalhes": [
-      "Composição: Couro e lona",
-      "Solado de borracha",
-      "Cadarço tradicional"
-    ]
-  },
-  {
-    "id": "N3XZQWPY9",
-    "nome": "Mochila Vans - Preta",
-    "preco": "R$ 259,90",
-    "imagem": "assetsimagesimg4.jpg",
-    "descricao": "Mochila resistente e espaçosa, perfeita para o dia a dia. Compartimentos organizados e alças acolchoadas.",
-    "categoria": "bag",
-    "marca": "vans",
-    "detalhes": [
-      "Composição: Poliéster",
-      "Capacidade: 22L",
-      "Compartimento para notebook"
-    ]
-  }
+    {
+        "id": "7",
+        "nome": "Camiseta Vans",
+        "preco": "171,98",
+        "imagem_principal": "uploads/img_68489567b7bb2.jpg",
+        "descricao": "Camiseta 100% algodão, feita com costura fina e modelo de qualidade.",
+        "categoria": "camiseta",
+        "marca": "Vans",
+        "detalhes": [
+            "algodon",
+            "costura",
+            "agulha"
+        ]
+    },
+    {
+        "id": "8",
+        "nome": "Camiseta Chronic",
+        "preco": "180,90",
+        "imagem_principal": "uploads/img_6849bd60a0766.jpg",
+        "descricao": "Uma camiseta muito boa, bacana  demais, show de bolo, chuchu beleza.",
+        "categoria": "bone",
+        "marca": "Chronic",
+        "detalhes": [
+            "Coisas",
+            "Bacanas"
+        ]
+    },
+    {
+        "id": "9",
+        "nome": "Camiseta Kenner",
+        "preco": "199,90",
+        "imagem_principal": "uploads/img_684b3ca4580f6.jpg",
+        "descricao": "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
+        "categoria": "camiseta",
+        "marca": "Kenner",
+        "detalhes": [
+            "100% algodão",
+            "Modelagem regular",
+            "Oversize"
+        ]
+    },
+    {
+        "id": "10",
+        "nome": "Camiseta Norden Street",
+        "preco": "250,00",
+        "imagem_principal": "uploads/img_684c80f367797.jpg",
+        "descricao": "Este produto é confeccionado em algodão orgânico de alta qualidade com modelagem oversized. Costuras reforçadas e acabamento premium garantem conforto e durabilidade.",
+        "categoria": "camiseta",
+        "marca": "Norden",
+        "detalhes": [
+            "100% algodão",
+            "Modelagem regular",
+            "Manga curta"
+        ]
+    }
 ]
