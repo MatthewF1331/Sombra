@@ -87,6 +87,20 @@
   },
   {
     "id": "N3XZQWPY8",
+    "nome": "Tênis Vans Old Skool - Preto",
+    "preco": "R$ 399,90",
+    "imagem": "assetsimagesimg3.jpg",
+    "descricao": "O clássico tênis Vans Old Skool em couro e lona. Confortável e durável, combina com qualquer look.",
+    "categoria": "tenis",
+    "marca": "vans",
+    "detalhes": [
+      "Composição: Couro e lona",
+      "Solado de borracha",
+      "Cadarço tradicional"
+    ]
+  },
+  {
+    "id": "N3XZQWPY9",
     "nome": "Mochila Vans - Preta",
     "preco": "R$ 259,90",
     "imagem": "assetsimagesimg4.jpg",
